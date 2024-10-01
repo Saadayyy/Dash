@@ -28,7 +28,7 @@
             <canvas id="totalFollowersChart" width="400" height="200"></canvas>
         </div>
         <div class="chart-wrapper">
-            <h3>New Followers</h3>
+            <h3>New Followers(last 7 Days)</h3>
             <canvas id="newFollowersChart" width="400" height="200"></canvas>
         </div>
     </div>
@@ -250,7 +250,7 @@
             labels: ['DPS-BS', 'WEKO', 'Sellmore GmbH', 'isales GmbH', 'CompData Computer GmbH'],
             datasets: [
                 {
-                    label: 'New Followers',
+                    label: 'New Followers(Last 7 Days)',
                     data: [50, 23, 19, 4, 2], // Example data
                     backgroundColor: [
                         'rgba(31,61,133,255)', // DPS-BS - blue
@@ -281,7 +281,7 @@
                         beginAtZero: true,
                         title: {
                             display: true,
-                            text: 'New Followers'
+                            text: 'New Followers(last 7 Days)'
                         }
                     },
                     x: {
