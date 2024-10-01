@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marketing Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Marketing Dashboard</title>    
     <style>
         .chart-container {
             display: flex;
@@ -16,10 +15,11 @@
             width: 45%;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    <h1>DPS-BS Live Marketing Dashboard</h1>
+    <h1 style="text-align: center;">DPS-BS Live Marketing Dashboard</h1>
 
     <!-- Bar chart for Total Followers -->
     <div class="chart-container">
@@ -45,10 +45,14 @@
         </div>
     </div>
 
-<h2 style="text-align: center;">Reactions, Comments, and Shares Percentage Change</h2>
-<div style="display: flex; justify-content: center;">
+   <h2 style="text-align: center;">Engagement Analytics</h2>
+
+<!-- Flex container to hold the table and chart side by side -->
+<div style="display: flex; flex-direction: row; align-items: flex-start; gap: 20px;">
+
+    <!-- Table -->
     <table
-        style="width: 50%; border: 5px solid black; border-collapse: collapse; text-align: center; margin-top: 20px;">
+        style="width: 50%; border: 5px solid black; border-collapse: collapse; text-align: center; margin-top: 30px;">
         <thead>
             <tr>
                 <th style="border: 1px solid black;">Metric</th>
@@ -67,8 +71,7 @@
                     <%= weeklyTotals.week2.reactions %>
                 </td>
                 <td style="border: 1px solid black;">
-                    <%= percentageChanges.reactions.toFixed(2) %>%
-                </td>
+                    <%= percentageChanges.reactions.toFixed(2) %>%</td>
             </tr>
             <tr>
                 <td style="border: 1px solid black;">Comments</td>
@@ -79,8 +82,7 @@
                     <%= weeklyTotals.week2.comments %>
                 </td>
                 <td style="border: 1px solid black;">
-                    <%= percentageChanges.comments.toFixed(2) %>%
-                </td>
+                    <%= percentageChanges.comments.toFixed(2) %>%</td>
             </tr>
             <tr>
                 <td style="border: 1px solid black;">Shares</td>
@@ -91,61 +93,124 @@
                     <%= weeklyTotals.week2.shares %>
                 </td>
                 <td style="border: 1px solid black;">
-                    <%= percentageChanges.shares.toFixed(2) %>%
-                </td>
+                    <%= percentageChanges.shares.toFixed(2) %>%</td>
             </tr>
         </tbody>
     </table>
+
+    <!-- Canvas for the chart -->
+    <div style="width: 50%; margin-top: 10px;">
+        <canvas id="engagementChart" style="width: 100%; height: 100%;"></canvas>
+    </div>
+
 </div>
 
-<!-- Competitor Analysis Table -->
-<h2 style="text-align: center;">Competitor Analysis</h2>
-<div style="display: flex; justify-content: center;">
-    <table style="width: 50%; border: 5px solid black; border-collapse: collapse; text-align: center;">
-        <thead>
-            <tr>
-                <th style="border: 1px solid black;">Competitor</th>
-                <th style="border: 1px solid black;">Total Followers</th>
-                <th style="border: 1px solid black;">New Followers</th>
-                <th style="border: 1px solid black;">Interactions</th>
-                <th style="border: 1px solid black;">Posts</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% competitorsData.forEach(comp=> { %>
+<script>
+    // Pass statsData from server
+    const statsData = <%- JSON.stringify(statsData) %>;
+
+    // Prepare the engagement rate data
+    const thisWeekEngagementRates = statsData
+        .slice(-7) // Get the last 7 days
+        .map(data => data.reactions / (data.impressions.organic + data.impressions.sponsored) * 100 || 0);
+
+    const lastWeekEngagementRates = statsData
+        .slice(-14, -7) // Get the 7 days before the last week
+        .map(data => data.reactions / (data.impressions.organic + data.impressions.sponsored) * 100 || 0);
+
+    const labels = statsData.slice(-7).map(data => data.date); // Get the dates for labels
+
+    // Create the line chart
+    const engagementData = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'This Week Engagement Rate(%)',
+                data: thisWeekEngagementRates,
+                borderColor: 'rgba(31, 61, 133, 255)',
+                backgroundColor: 'rgba(255, 99, 132, 0)',
+                fill: true,
+                tension: 0.1 // Smooth the line
+            },
+            {
+                label: 'Last Week Engagement Rate(%)',
+                data: lastWeekEngagementRates,
+                borderColor: 'rgba(189,208,42,255)',
+                backgroundColor: 'rgba(255, 99, 132, 0)',
+                fill: true,
+                tension: 0.1 // Smooth the line
+            }
+        ]
+    };
+
+    const engagementCtx = document.getElementById('engagementChart').getContext('2d');
+    new Chart(engagementCtx, {
+        type: 'line',
+        data: engagementData,
+    });
+</script>
+
+
+    <!-- Competitor Analysis Table -->
+    <h2 style="text-align: center;">Competitor Analysis</h2>
+    <div style="display: flex; justify-content: center;">
+        <table
+            style="width: 50%; border: 5px solid black; border-collapse: collapse; text-align: center; margin-top: 30px;">
+            <thead>
                 <tr>
-                    <td style="border: 1px solid black;">
-                        <%= comp.name %>
-                    </td>
-                    <td style="border: 1px solid black;">
-                        <%= comp.followers %>
-                    </td>
-                    <td style="border: 1px solid black;">
-                        <%= comp.newFollowers %>
-                    </td>
-                    <td style="border: 1px solid black;">
-                        <%= comp.interactions %>
-                    </td>
-                    <td style="border: 1px solid black;">
-                        <%= comp.posts %>
-                    </td>
+                    <th style="border: 1px solid black;">Competitor</th>
+                    <th style="border: 1px solid black;">Total Followers</th>
+                    <th style="border: 1px solid black;">New Followers</th>
+                    <th style="border: 1px solid black;">Interactions</th>
+                    <th style="border: 1px solid black;">Posts</th>
                 </tr>
-                <% }) %>
-        </tbody>
-    </table>
-</div>
-
+            </thead>
+            <tbody>
+                <% competitorsData.forEach(comp=> { %>
+                    <tr>
+                        <td style="border: 1px solid black;">
+                            <%= comp.name %>
+                        </td>
+                        <td style="border: 1px solid black;">
+                            <%= comp.followers %>
+                        </td>
+                        <td style="border: 1px solid black;">
+                            <%= comp.newFollowers %>
+                        </td>
+                        <td style="border: 1px solid black;">
+                            <%= comp.interactions %>
+                        </td>
+                        <td style="border: 1px solid black;">
+                            <%= comp.posts %>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
 
     <script>
         // Bar chart for total followers
         const totalFollowersData = {
-            labels: ['DPS-BS', 'WEKO', 'Sellmore GmbH', 'isales GmbH', 'CompData Computer GmbH', 'DPS Business Solutions'],
+            labels: ['DPS-BS', 'WEKO', 'Sellmore GmbH', 'isales GmbH', 'CompData Computer GmbH'],
             datasets: [
                 {
                     label: 'Total Followers',
-                    data: [2039, 1476, 997, 557, 687, 2039],
-                    backgroundColor: 'rgba(75, 192, 192, 0.7)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    data: [2039, 1476, 997, 557, 687],
+                    backgroundColor: [
+                        'rgba(31,61,133,255)', // DPS-BS - blue
+                        'rgba(200, 200, 200, 0.7)', // WEKO - gray
+                        'rgba(200, 200, 200, 0.7)', // Sellmore GmbH - gray
+                        'rgba(200, 200, 200, 0.7)', // isales GmbH - gray
+                        'rgba(200, 200, 200, 0.7)'  // CompData Computer GmbH - gray
+                    ],
+                    borderColor: [
+                        'rgba(31,61,133,255)', // DPS-BS - blue
+                        'rgba(200, 200, 200, 1)', // WEKO - gray
+                        'rgba(200, 200, 200, 1)', // Sellmore GmbH - gray
+                        'rgba(200, 200, 200, 1)', // isales GmbH - gray
+                        'rgba(200, 200, 200, 1)'  // CompData Computer GmbH - gray
+                    ],
                     borderWidth: 1
                 }
             ]
@@ -157,20 +222,50 @@
             data: totalFollowersData,
             options: {
                 scales: {
-                    y: { beginAtZero: true }
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Followers'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Competitors'
+                        }
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
                 }
             }
         });
 
         // Bar chart for new followers
         const newFollowersData = {
-            labels: ['DPS-BS', 'WEKO', 'Sellmore GmbH', 'isales GmbH', 'CompData Computer GmbH', 'DPS Business Solutions'],
+            labels: ['DPS-BS', 'WEKO', 'Sellmore GmbH', 'isales GmbH', 'CompData Computer GmbH'],
             datasets: [
                 {
                     label: 'New Followers',
-                    data: [254, 45, 41, 37, 83, 254],
-                    backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
+                    data: [50, 23, 19, 4, 2], // Example data
+                    backgroundColor: [
+                        'rgba(31,61,133,255)', // DPS-BS - blue
+                        'rgba(200, 200, 200, 0.7)', // WEKO - gray
+                        'rgba(200, 200, 200, 0.7)', // Sellmore GmbH - gray
+                        'rgba(200, 200, 200, 0.7)', // isales GmbH - gray
+                        'rgba(200, 200, 200, 0.7)'  // CompData Computer GmbH - gray
+                    ],
+                    borderColor: [
+                        'rgba(31,61,133,255)', // DPS-BS - blue
+                        'rgba(200, 200, 200, 1)', // WEKO - gray
+                        'rgba(200, 200, 200, 1)', // Sellmore GmbH - gray
+                        'rgba(200, 200, 200, 1)', // isales GmbH - gray
+                        'rgba(200, 200, 200, 1)'  // CompData Computer GmbH - gray
+                    ],
                     borderWidth: 1
                 }
             ]
@@ -182,75 +277,93 @@
             data: newFollowersData,
             options: {
                 scales: {
-                    y: { beginAtZero: true }
-                }
-            }
-        });
-
-        // Bar chart for impressions (organic and sponsored)
-        const impressionsData = {
-            labels: ['This Week', 'Last Week'],
-            datasets: [
-                {
-                    label: 'Organic Impressions',
-                    data: [<%= weeklyTotals.week1.impressions.organic %>, <%= weeklyTotals.week2.impressions.organic %>],
-                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'New Followers'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Competitors'
+                        }
+                    }
                 },
-                {
-                    label: 'Sponsored Impressions',
-                    data: [<%= weeklyTotals.week1.impressions.sponsored %>, <%= weeklyTotals.week2.impressions.sponsored %>],
-                    backgroundColor: 'rgba(255, 206, 86, 0.7)',
-                    borderColor: 'rgba(255, 206, 86, 1)',
-                    borderWidth: 1
-                }
-            ]
-        };
-
-        const impressionsCtx = document.getElementById('impressionsChart').getContext('2d');
-        new Chart(impressionsCtx, {
-            type: 'bar',
-            data: impressionsData,
-            options: {
-                scales: {
-                    y: { beginAtZero: true }
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
                 }
             }
         });
 
-        // Bar chart for clicks (organic and sponsored)
-        const clicksData = {
-            labels: ['This Week', 'Last Week'],
-            datasets: [
-                {
-                    label: 'Organic Clicks',
-                    data: [<%= weeklyTotals.week1.clicks.organic %>, <%= weeklyTotals.week2.clicks.organic %>],
-                    backgroundColor: 'rgba(75, 192, 192, 0.7)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Sponsored Clicks',
-                    data: [<%= weeklyTotals.week1.clicks.sponsored %>, <%= weeklyTotals.week2.clicks.sponsored %>],
-                    backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1
-                }
-            ]
-        };
-
-        const clicksCtx = document.getElementById('clicksChart').getContext('2d');
-        new Chart(clicksCtx, {
-            type: 'bar',
-            data: clicksData,
-            options: {
-                scales: {
-                    y: { beginAtZero: true }
-                }
+    // Bar chart for impressions (organic and sponsored)
+    const impressionsData = {
+        labels: ['This Week', 'Last Week'],
+        datasets: [
+            {
+                label: 'Organic Impressions',
+                data: [<%= weeklyTotals.week1.impressions.organic %>, <%= weeklyTotals.week2.impressions.organic %>],
+                backgroundColor: 'rgba(31,61,133,255)',
+                borderColor: 'rgba(31,61,133,255)',
+                borderWidth: 1
+            },
+            {
+                label: 'Sponsored Impressions',
+                data: [<%= weeklyTotals.week1.impressions.sponsored %>, <%= weeklyTotals.week2.impressions.sponsored %>],
+                backgroundColor: 'rgba(189,208,42,255)',
+                borderColor: 'rgba(189,208,42,255)',
+                borderWidth: 1
             }
-        });
-    </script>
-</body>
+        ]
+    };
 
-</html>
+    const impressionsCtx = document.getElementById('impressionsChart').getContext('2d');
+    new Chart(impressionsCtx, {
+        type: 'bar',
+        data: impressionsData,
+        options: {
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+
+    // Bar chart for clicks (organic and sponsored)
+    const clicksData = {
+        labels: ['This Week', 'Last Week'],
+        datasets: [
+            {
+                label: 'Organic Clicks',
+                data: [<%= weeklyTotals.week1.clicks.organic %>, <%= weeklyTotals.week2.clicks.organic %>],
+                backgroundColor: 'rgba(31,61,133,255)',
+                borderColor: 'rgba(31,61,133,255)',
+                borderWidth: 1
+            },
+            {
+                label: 'Sponsored Clicks',
+                data: [<%= weeklyTotals.week1.clicks.sponsored %>, <%= weeklyTotals.week2.clicks.sponsored %>],
+                backgroundColor: 'rgba(189,208,42,255)',
+                borderColor: 'rgba(189,208,42,255)',
+                borderWidth: 1
+            }
+        ]
+    };
+
+    const clicksCtx = document.getElementById('clicksChart').getContext('2d');
+    new Chart(clicksCtx, {
+        type: 'bar',
+        data: clicksData,
+        options: {
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
+    </body>
+    
+    </html>
