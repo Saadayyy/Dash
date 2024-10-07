@@ -6,30 +6,31 @@ app.set('view engine', 'ejs');
 
 // Data for last 14 days (grouped by week)
 const statsData = [
-    { date: '09/16/2024', impressions: { organic: 260, sponsored: 1398 }, clicks: { organic: 5, sponsored: 6 }, reactions: 7, comments: 0, shares: 0, engagementRate: 0.010856454 },
-    { date: '09/17/2024', impressions: { organic: 545, sponsored: 1129 }, clicks: { organic: 20, sponsored: 9 }, reactions: 15, comments: 0, shares: 2, engagementRate: 0.027479092 },
-    { date: '09/18/2024', impressions: { organic: 284, sponsored: 2476 }, clicks: { organic: 11, sponsored: 3 }, reactions: 5, comments: 0, shares: 3, engagementRate: 0.007971014 },
-    { date: '09/19/2024', impressions: { organic: 700, sponsored: 19312 }, clicks: { organic: 45, sponsored: 74 }, reactions: 67, comments: 2, shares: 3, engagementRate: 0.009244453 },
-    { date: '09/20/2024', impressions: { organic: 457, sponsored: 11550 }, clicks: { organic: 21, sponsored: 45 }, reactions: 36, comments: 1, shares: 2, engagementRate: 0.00841176 },
     { date: '09/21/2024', impressions: { organic: 178, sponsored: 6950 }, clicks: { organic: 3, sponsored: 41 }, reactions: 10, comments: 0, shares: 0, engagementRate: 0.00701459 },
-    { date: '09/22/2024', impressions: { organic: 302, sponsored: 6161 }, clicks: { organic: 13, sponsored: 38 }, reactions: 25, comments: 0, shares: 1, engagementRate: 0.011913972 },
-    { date: '09/23/2024', impressions: { organic: 1387, sponsored: 3331 }, clicks: { organic: 95, sponsored: 20 }, reactions: 67, comments: 5, shares: 3, engagementRate: 0.040059347 },
-    { date: '09/24/2024', impressions: { organic: 796, sponsored: 4156 }, clicks: { organic: 44, sponsored: 30 }, reactions: 28, comments: 2, shares: 1, engagementRate: 0.020799677 },
+    { date: '09/22/2024', impressions: { organic: 302, sponsored: 6161 }, clicks: { organic: 13, sponsored: 38 }, reactions: 25, comments: 0, shares: 0, engagementRate: 0.011913972 },
+    { date: '09/23/2024', impressions: { organic: 1387, sponsored: 3331 }, clicks: { organic: 95, sponsored: 20 }, reactions: 67, comments: 5, shares: 1, engagementRate: 0.040059347 },
+    { date: '09/24/2024', impressions: { organic: 796, sponsored: 4156 }, clicks: { organic: 44, sponsored: 30 }, reactions: 28, comments: 2, shares: 5, engagementRate: 0.020799677 },
     { date: '09/25/2024', impressions: { organic: 447, sponsored: 675 }, clicks: { organic: 19, sponsored: 10 }, reactions: 8, comments: 0, shares: 0, engagementRate: 0.032976827 },
-    { date: '09/26/2024', impressions: { organic: 311, sponsored: 158 }, clicks: { organic: 15, sponsored: 1 }, reactions: 49, comments: 4, shares: 0, engagementRate: -0.078891258 },
-    { date: '09/27/2024', impressions: { organic: 581, sponsored: 0 }, clicks: { organic: 16, sponsored: 0 }, reactions: 22, comments: 0, shares: 1, engagementRate: 0.067125645 },
-    { date: '09/28/2024', impressions: { organic: 261, sponsored: 0 }, clicks: { organic: 2, sponsored: 0 }, reactions: 4, comments: 0, shares: 1, engagementRate: 0.026819923 },
-    { date: '09/29/2024', impressions: { organic: 211, sponsored: 0 }, clicks: { organic: 10, sponsored: 0 }, reactions: 3, comments: 0, shares: 0, engagementRate: 0.061611374 }
+    { date: '09/26/2024', impressions: { organic: 311, sponsored: 158 }, clicks: { organic: 15, sponsored: 1 }, reactions: -49, comments: -4, shares: 3, engagementRate: -0.078891258 },
+    { date: '09/27/2024', impressions: { organic: 581, sponsored: 0 }, clicks: { organic: 16, sponsored: 0 }, reactions: 22, comments: 0, shares: 2, engagementRate: 0.067125645 },
+    { date: '09/28/2024', impressions: { organic: 261, sponsored: 0 }, clicks: { organic: 2, sponsored: 0 }, reactions: 4, comments: 0, shares: 0, engagementRate: 0.026819923 },
+    { date: '09/29/2024', impressions: { organic: 211, sponsored: 0 }, clicks: { organic: 10, sponsored: 0 }, reactions: 3, comments: 0, shares: 0, engagementRate: 0.061611374 },
+    { date: '09/30/2024', impressions: { organic: 680, sponsored: 0 }, clicks: { organic: 18, sponsored: 0 }, reactions: 20, comments: 1, shares: 1, engagementRate: 0.060294118 },
+    { date: '10/01/2024', impressions: { organic: 273, sponsored: 0 }, clicks: { organic: 5, sponsored: 0 }, reactions: 10, comments: 0, shares: 2, engagementRate: 0.054945055 },
+    { date: '10/02/2024', impressions: { organic: 251, sponsored: 0 }, clicks: { organic: 11, sponsored: 0 }, reactions: 4, comments: 0, shares: 1, engagementRate: 0.051792829 },
+    { date: '10/03/2024', impressions: { organic: 115, sponsored: 0 }, clicks: { organic: 7, sponsored: 0 }, reactions: 1, comments: 0, shares: 1, engagementRate: 0.069565217 },
+    { date: '10/04/2024', impressions: { organic: 124, sponsored: 0 }, clicks: { organic: 3, sponsored: 0 }, reactions: 1, comments: 0, shares: 2, engagementRate: 0.032258065 },
+    { date: '10/05/2024', impressions: { organic: 103, sponsored: 0 }, clicks: { organic: 4, sponsored: 0 }, reactions: 2, comments: 0, shares: 0, engagementRate: 0.058252427 }
 ];
 
-
-// Competitor Data
+// Updated Competitor Data from 09/21/2024 to 10/05/2024
 const competitorsData = [
-    { name: "WEKO", followers: 1476, newFollowers: 45, interactions: 157, posts: 20 },
-    { name: "Sellmore GmbH", followers: 997, newFollowers: 41, interactions: 166, posts: 8 },
-    { name: "isales GmbH", followers: 557, newFollowers: 37, interactions: 244, posts: 6 },
-    { name: "CompData Computer GmbH", followers: 687, newFollowers: 83, interactions: 197, posts: 7 },
-    { name: "DPS Business Solutions", followers: 2039, newFollowers: 254, interactions: 584, posts: 15 },
+    { name: "WEKO", followers: 1490, newFollowers: 21, interactions: 74, posts: 11 },
+    { name: "Sellmore GmbH", followers: 1007, newFollowers: 21, interactions: 65, posts: 3 },
+    { name: "isales GmbH", followers: 558, newFollowers: 9, interactions: 104, posts: 2 },
+    { name: "CompData Computer GmbH", followers: 712, newFollowers: 62, interactions: 118, posts: 5 },
+    { name: "DPS Business Solutions", followers: 2072, newFollowers: 122, interactions: 163, posts: 5 },
+    { name: "Datatronic Software AG", followers: 1429, newFollowers: 9, interactions: 195, posts: 14 }
 ];
 
 // Helper function to calculate weekly totals
