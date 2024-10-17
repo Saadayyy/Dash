@@ -4,14 +4,14 @@ const port = 3000;
 
 app.set('view engine', 'ejs');
 
-// Data for last 14 days (grouped by week)
+// LinkedIn Data for the last 14 days (grouped by week)
 const statsData = [
     { date: '09/21/2024', impressions: { organic: 178, sponsored: 6950 }, clicks: { organic: 3, sponsored: 41 }, reactions: 10, comments: 0, shares: 0, engagementRate: 0.00701459 },
     { date: '09/22/2024', impressions: { organic: 302, sponsored: 6161 }, clicks: { organic: 13, sponsored: 38 }, reactions: 25, comments: 0, shares: 0, engagementRate: 0.011913972 },
     { date: '09/23/2024', impressions: { organic: 1387, sponsored: 3331 }, clicks: { organic: 95, sponsored: 20 }, reactions: 67, comments: 5, shares: 1, engagementRate: 0.040059347 },
     { date: '09/24/2024', impressions: { organic: 796, sponsored: 4156 }, clicks: { organic: 44, sponsored: 30 }, reactions: 28, comments: 2, shares: 5, engagementRate: 0.020799677 },
     { date: '09/25/2024', impressions: { organic: 447, sponsored: 675 }, clicks: { organic: 19, sponsored: 10 }, reactions: 8, comments: 0, shares: 0, engagementRate: 0.032976827 },
-    { date: '09/26/2024', impressions: { organic: 311, sponsored: 158 }, clicks: { organic: 15, sponsored: 1 }, reactions: -49, comments: -4, shares: 3, engagementRate: -0.078891258 },
+    { date: '09/26/2024', impressions: { organic: 311, sponsored: 158 }, clicks: { organic: 15, sponsored: 1 }, reactions: 49, comments: 4, shares: 3, engagementRate: 0.078891258 }, // Fixed negative values
     { date: '09/27/2024', impressions: { organic: 581, sponsored: 0 }, clicks: { organic: 16, sponsored: 0 }, reactions: 22, comments: 0, shares: 2, engagementRate: 0.067125645 },
     { date: '09/28/2024', impressions: { organic: 261, sponsored: 0 }, clicks: { organic: 2, sponsored: 0 }, reactions: 4, comments: 0, shares: 0, engagementRate: 0.026819923 },
     { date: '09/29/2024', impressions: { organic: 211, sponsored: 0 }, clicks: { organic: 10, sponsored: 0 }, reactions: 3, comments: 0, shares: 0, engagementRate: 0.061611374 },
@@ -23,7 +23,7 @@ const statsData = [
     { date: '10/05/2024', impressions: { organic: 103, sponsored: 0 }, clicks: { organic: 4, sponsored: 0 }, reactions: 2, comments: 0, shares: 0, engagementRate: 0.058252427 }
 ];
 
-// Updated Competitor Data from 09/21/2024 to 10/05/2024
+// Competitor Data from 09/21/2024 to 10/05/2024
 const competitorsData = [
     { name: "WEKO", followers: 1490, newFollowers: 21, interactions: 74, posts: 11 },
     { name: "Sellmore GmbH", followers: 1007, newFollowers: 21, interactions: 65, posts: 3 },
@@ -32,6 +32,46 @@ const competitorsData = [
     { name: "DPS Business Solutions", followers: 2072, newFollowers: 122, interactions: 163, posts: 5 },
     { name: "Datatronic Software AG", followers: 1429, newFollowers: 9, interactions: 195, posts: 14 }
 ];
+
+// Website Analytics Data
+const websiteData = {
+    activeUsers: [65, 55, 44, 9, 18, 101, 82, 96, 122, 44, 2, 16, 63, 67, 53, 16, 34, 13, 19, 61, 107, 63, 84, 68, 7, 14, 74, 70],
+    newUsers: [50, 39, 29, 7, 16, 74, 63, 59, 90, 30, 1, 14, 48, 44, 37, 12, 23, 11, 16, 34, 74, 40, 59, 34, 7, 9, 45, 46],
+    averageEngagementTime: [97.89, 103.47, 125.98, 22.56, 16.67, 100.09, 77.84, 78.33, 109.88, 64.93, 70.00, 69.75, 120.38, 62.87, 75.53, 79.13, 75.88, 31.92, 32.79, 89.54, 160.34, 85.30, 121.17, 104.69, 48.29, 70.36, 125.77, 56.33],
+    userSources: {
+        direct: 442,
+        organicSearch: 282,
+        paidSearch: 169,
+        referral: 75,
+        organicSocial: 43
+    },
+    activeUsersByCountry: {
+        DE: 992,
+        AT: 16,
+        IE: 12,
+        IN: 11,
+        CH: 8,
+        ID: 8,
+        ES: 7
+    },
+    pageViews: {
+        'Business Software | für ERP, HR, IT Betr. und Cloud-Hosting': 888,
+        'DPS|BS Campus ▶ All in one Lernplattform': 444,
+        'DPS|BS Campus': 422,
+        'Anmelden - DPS|BS Campus': 358,
+        'Webinare - DPS Business Solutions': 271,
+        'Entdecken - DPS|BS Campus': 182,
+        'IT Systemhaus | Ihr Ansprechpartner für Software und IT': 131,
+        'Mein Profil - DPS|BS Campus': 125,
+        'Wie eine effektive Unternehmensstruktur Ihr Geschäft vorantreibt': 113,
+        'Blog - DPS Business Solutions': 109,
+        'Meine Kurse - DPS|BS Campus': 102,
+        'Referenzen aus den unterschiedlichsten Branchen': 87,
+        'Vereinscampus - DPS Business Solutions': 87,
+        '- - DPS|BS Campus': 82,
+        'Sage HR Suite | Integrierte Personalsoftware': 77
+    }
+};
 
 // Helper function to calculate weekly totals
 function calculateWeeklyTotals(data) {
@@ -67,9 +107,10 @@ function calculateWeeklyTotals(data) {
 
     return { week1, week2 };
 }
+
 // Function to calculate percentage change between weeks
 function calculatePercentageChange(current, previous) {
-    return ((current - previous) / previous) * 100;
+    return previous === 0 ? 0 : ((current - previous) / previous) * 100;
 }
 
 // Calculate weekly totals
@@ -82,19 +123,20 @@ const percentageChanges = {
     shares: calculatePercentageChange(weeklyTotals.week2.shares, weeklyTotals.week1.shares)
 };
 
-// Route to serve the dashboard
+// Route to serve the LinkedIn and website dashboard
 app.get('/', (req, res) => {
     res.render('dashboard', {
         statsData,
         competitorsData,
+        websiteData, // Pass website analytics data to the frontend
         weeklyTotals,
         percentageChanges
     });
 });
 
-// Render the dashboard
-app.get('/', (req, res) => {
-    res.render('index', { statsData, competitorsData });
+// Route to serve the website analytics data
+app.get('/api/website-data', (req, res) => {
+    res.json(websiteData);
 });
 
 // Start server
