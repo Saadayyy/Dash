@@ -134,10 +134,6 @@ app.get('/', (req, res) => {
     });
 });
 
-// Route to serve the website analytics data
-app.get('/api/website-data', (req, res) => {
-    res.json(websiteData);
-});
 
 // Start server
 app.listen(port, () => {

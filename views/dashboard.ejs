@@ -19,16 +19,16 @@
 </head>
 
 <body>
-    <h1 style="text-align: center;">DPS-BS Live Marketing Dashboard</h1>
+    <h1 style="text-align: center;">DPS-BS Marketing Dashboard</h1>
 
     <!-- Bar chart for Total Followers -->
     <div class="chart-container">
         <div class="chart-wrapper">
-            <h3>Total Followers</h3>
+            <h3>Linkedin:Total Followers</h3>
             <canvas id="totalFollowersChart" width="400" height="200"></canvas>
         </div>
         <div class="chart-wrapper">
-            <h3>New Followers(last 7 Days)</h3>
+            <h3>Linkedin:New Followers(last 7 Days)</h3>
             <canvas id="newFollowersChart" width="400" height="200"></canvas>
         </div>
     </div>
@@ -36,11 +36,11 @@
     <!-- Side-by-side bar charts for impressions and clicks -->
     <div class="chart-container">
         <div class="chart-wrapper">
-            <h3>Impressions</h3>
+            <h3>Linkedin:Impressions</h3>
             <canvas id="impressionsChart" width="400" height="200"></canvas>
         </div>
         <div class="chart-wrapper">
-            <h3>Clicks</h3>
+            <h3>Linkedin:Clicks</h3>
             <canvas id="clicksChart" width="400" height="200"></canvas>
         </div>
     </div>
@@ -367,6 +367,107 @@
         }
     });
 </script>
-    </body>
-    
-    </html>
+
+<h2 style="text-align: center; margin: top 50px;">Website Analysis</h2>
+
+
+<!-- Line Chart: Active vs. New Users -->
+<div class="full-width-chart">
+    <h3>Website:Active & New Users(Last 28 Days)</h3>
+    <canvas id="userChart"></canvas>
+</div>
+
+<div style="display: flex; justify-content: flex-start; width: 100%">
+    <!-- Bar Chart: User Sources -->
+    <div class="chart-wrapper" style="margin-right: 0 px; flex: 1;">
+        <h3>Website: Users Sources (Top 5)</h3>
+        <canvas id="userSourceChart" style="max-width: 600px; width: 100%;"></canvas>
+    </div>
+
+    <!-- Bar Chart: Active Users by Country -->
+    <div class="chart-wrapper" style="flex: 1;">
+        <h3>Website: Users Country</h3>
+        <canvas id="activeUsersByCountryChart" style="max-width: 600px; width: 100%;"></canvas>
+    </div>
+</div>
+
+
+<!-- Bar Chart: Page Views -->
+<div style="width: 100%; display: flex; flex-direction: column; align-items: flex-start;">
+    <h3>Website: Views by Page</h3>
+    <canvas id="pageViewsChart" style="width: 100%;"></canvas>
+</div>
+
+
+<script>
+    // Pass backend data to frontend (ensure correct EJS syntax with <%= %>)
+const websiteData = <%- JSON.stringify(websiteData) %>;
+
+    // Line Chart: Active vs. New Users
+    const userChart = new Chart(document.getElementById('userChart'), {
+        label: 'Active & New Users(last 28 days)',
+        type: 'line',
+        data: {
+            labels: Array.from({ length: 28 }, (_, i) => "Day " + (i + 1)),
+            datasets: [
+                {
+                    label: 'Active Users',
+                    borderColor: 'rgba(31, 61, 133, 255)',
+                    backgroundColor: 'rgba(31, 61, 133, 255)',
+                    data: websiteData.activeUsers
+                },
+                {
+                    label: 'New Users',
+                    borderColor: 'rgba(189,208,42,255)',
+                    backgroundColor: 'rgba(189,208,42,255)',
+                    data: websiteData.newUsers
+                }
+            ]
+        }
+    });
+
+    // Bar Chart: User Sources
+    const userSourceChart = new Chart(document.getElementById('userSourceChart'), {
+        type: 'bar',
+        data: {
+            labels: Object.keys(websiteData.userSources),
+            datasets: [{
+                label: 'User Sources',
+                backgroundColor: 'rgba(31, 61, 133, 255)',
+                borderColor: 'rgba(255, 159, 64, 1)',
+                data: Object.values(websiteData.userSources)
+            }]
+        }
+    });
+
+    // Bar Chart: Active Users by Country
+    const activeUsersByCountryChart = new Chart(document.getElementById('activeUsersByCountryChart'), {
+        type: 'bar',
+        data: {
+            labels: Object.keys(websiteData.activeUsersByCountry),
+            datasets: [{
+                label: 'Active Users by Country',
+                backgroundColor: 'rgba(189,208,42,255)',
+                borderColor: 'rgba(189,208,42,255)',
+                data: Object.values(websiteData.activeUsersByCountry)
+            }]
+        }
+    });
+
+    // Bar Chart: Page Views
+    const pageViewsChart = new Chart(document.getElementById('pageViewsChart'), {
+        type: 'bar',
+        data: {
+            labels: Object.keys(websiteData.pageViews),
+            datasets: [{
+                label: 'Page Views',
+                backgroundColor: 'rgba(31,61,133,255)',
+                borderColor: 'rgba(31,61,133,255)',
+                data: Object.values(websiteData.pageViews)
+            }]
+        }
+    });
+</script>
+</body>
+
+</html>
