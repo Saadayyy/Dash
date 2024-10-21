@@ -33,11 +33,19 @@ const competitorsData = [
     { name: "Datatronic Software AG", followers: 1429, newFollowers: 9, interactions: 195, posts: 14 }
 ];
 
-// Website Analytics Data
+// Website Analytics Data for 90 Days in Weekly Increments
+const startDate = new Date('2024-07-23');
+const weeklyIncrements = Array.from({ length: 14 }, (_, i) => {
+    let currentDate = new Date(startDate);
+    currentDate.setDate(currentDate.getDate() + i * 7);  // Add 7 days for each week
+    return currentDate.toISOString().slice(0, 10);  // Format as YYYY-MM-DD
+});
+
 const websiteData = {
-    activeUsers: [65, 55, 44, 9, 18, 101, 82, 96, 122, 44, 2, 16, 63, 67, 53, 16, 34, 13, 19, 61, 107, 63, 84, 68, 7, 14, 74, 70],
-    newUsers: [50, 39, 29, 7, 16, 74, 63, 59, 90, 30, 1, 14, 48, 44, 37, 12, 23, 11, 16, 34, 74, 40, 59, 34, 7, 9, 45, 46],
-    averageEngagementTime: [97.89, 103.47, 125.98, 22.56, 16.67, 100.09, 77.84, 78.33, 109.88, 64.93, 70.00, 69.75, 120.38, 62.87, 75.53, 79.13, 75.88, 31.92, 32.79, 89.54, 160.34, 85.30, 121.17, 104.69, 48.29, 70.36, 125.77, 56.33],
+    activeUsers: [64, 159, 210, 186, 182, 188, 199, 248, 266, 399, 230, 351, 347, 8],
+    newUsers: [64, 157, 189, 157, 137, 145, 161, 203, 228, 333, 189, 264, 238, 6],
+    weeklyIncrements: weeklyIncrements,  // Include the calculated weekly dates
+    averageEngagementTime: [/* same as before */],
     userSources: {
         direct: 442,
         organicSearch: 282,

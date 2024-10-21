@@ -371,31 +371,35 @@
 <h2 style="text-align: center; margin: top 50px;">Website Analysis</h2>
 
 
-<!-- Line Chart: Active vs. New Users -->
-<div class="full-width-chart">
-    <h3>Website:Active & New Users(Last 28 Days)</h3>
-    <canvas id="userChart"></canvas>
+<!-- Line Chart: Active & New Users (Centered) -->
+<div class="chart-container"
+    style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 70vh;">
+    <!-- Center both the title and chart -->
+    <h3 style="text-align: center;">Website: Active & New Users (Last 90 Days)</h3>
+    <canvas id="userChart" style="width: 20vw; height: 20vh;"></canvas>
+    <!-- Set canvas to half the viewport width and height -->
 </div>
 
-<div style="display: flex; justify-content: flex-start; width: 100%">
+<div style="display: flex; justify-content: flex-start; width: 100%;">
     <!-- Bar Chart: User Sources -->
-    <div class="chart-wrapper" style="margin-right: 0 px; flex: 1;">
+    <div class="chart-wrapper" style="margin-right: 0px; flex: 1; margin-top: 15px;"> <!-- Correct margin-top -->
         <h3>Website: Users Sources (Top 5)</h3>
         <canvas id="userSourceChart" style="max-width: 600px; width: 100%;"></canvas>
     </div>
 
     <!-- Bar Chart: Active Users by Country -->
-    <div class="chart-wrapper" style="flex: 1;">
+    <div class="chart-wrapper" style="flex: 1; margin-top: 15px;"> <!-- Added margin-top for consistency -->
         <h3>Website: Users Country</h3>
         <canvas id="activeUsersByCountryChart" style="max-width: 600px; width: 100%;"></canvas>
     </div>
 </div>
 
 
-<!-- Bar Chart: Page Views -->
-<div style="width: 100%; display: flex; flex-direction: column; align-items: flex-start;">
-    <h3>Website: Views by Page</h3>
-    <canvas id="pageViewsChart" style="width: 100%;"></canvas>
+<div class="chart-container"
+    style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 80vh;">
+    <!-- Center both title and chart -->
+    <h3 style="text-align: center;">Website: Views by Page</h3>
+    <canvas id="pageViewsChart" style="width: 20vw; height: 20vh;"></canvas> <!-- Half screen width and height -->
 </div>
 
 
@@ -404,26 +408,26 @@
 const websiteData = <%- JSON.stringify(websiteData) %>;
 
     // Line Chart: Active vs. New Users
-    const userChart = new Chart(document.getElementById('userChart'), {
-        label: 'Active & New Users(last 28 days)',
-        type: 'line',
-        data: {
-            labels: Array.from({ length: 28 }, (_, i) => "Day " + (i + 1)),
-            datasets: [
-                {
-                    label: 'Active Users',
-                    borderColor: 'rgba(31, 61, 133, 255)',
-                    backgroundColor: 'rgba(31, 61, 133, 255)',
-                    data: websiteData.activeUsers
-                },
-                {
-                    label: 'New Users',
-                    borderColor: 'rgba(189,208,42,255)',
-                    backgroundColor: 'rgba(189,208,42,255)',
-                    data: websiteData.newUsers
-                }
-            ]
-        }
+        const userChart = new Chart(document.getElementById('userChart'), {
+            label: 'Active & New Users (Last 90 Days)',
+            type: 'line',
+            data: {
+                labels: websiteData.weeklyIncrements,  // Use the actual dates for each week
+                datasets: [
+                    {
+                        label: 'Active Users',
+                        borderColor: 'rgba(31, 61, 133, 255)',
+                        backgroundColor: 'rgba(31, 61, 133, 255)',
+                        data: websiteData.activeUsers
+                    },
+                    {
+                        label: 'New Users',
+                        borderColor: 'rgba(189, 208, 42, 255)',
+                        backgroundColor: 'rgba(189, 208, 42, 255)',
+                        data: websiteData.newUsers
+                    }
+                ]
+            }
     });
 
     // Bar Chart: User Sources
@@ -468,6 +472,16 @@ const websiteData = <%- JSON.stringify(websiteData) %>;
         }
     });
 </script>
+
+<div style="text-align: center; margin-top: 40px;">
+    <p style="font-size: 14px;">
+        For more detailed reports, See:
+        <a href="https://analytics.google.com/analytics/web/?utm_source=marketingplatform.google.com&utm_medium=et&utm_campaign=marketingplatform.google.com%2Fabout%2Fanalytics%2F#/p451243375/reports/explorer?params=_u..nav%3Dmaui%26_u.date00%3D20241007%26_u.date01%3D20241018%26_u.date10%3D20240923%26_u.date11%3D20241004&r=9803226048&collectionId=business-objectives" target="_blank" style="text-decoration: none; color: #1f3d85;">Traffic acquisition</a>
+        or 
+        <a href="https://analytics.google.com/analytics/web/#/p451243375/reports/reportinghub?params=_u..nav%3Dmaui%26_u.dateOption%3Dlast28Days%26_u.comparisonOption%3Ddisabled&collectionId=business-objectives" target="_blank" style="text-decoration: none; color: #1f3d85;">In-Depth Report</a>.
+    </p>
+</div>
+</body>
 </body>
 
 </html>
