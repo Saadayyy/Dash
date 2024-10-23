@@ -36,11 +36,11 @@
     <!-- Side-by-side bar charts for impressions and clicks -->
     <div class="chart-container">
         <div class="chart-wrapper">
-            <h3>Linkedin:Impressions</h3>
+            <h3>Linkedin:Impressions (last 15 days)</h3>
             <canvas id="impressionsChart" width="400" height="200"></canvas>
         </div>
         <div class="chart-wrapper">
-            <h3>Linkedin:Clicks</h3>
+            <h3>Linkedin:Clicks (last 15 days)</h3>
             <canvas id="clicksChart" width="400" height="200"></canvas>
         </div>
     </div>
@@ -303,30 +303,46 @@
             }
         });
 
-    // Bar chart for impressions (organic and sponsored)
+    // Daily impressions data from your dataset
     const impressionsData = {
-        labels: ['This Week', 'Last Week'],
+        labels: [
+            '10/07/2024', '10/08/2024', '10/09/2024', '10/10/2024',
+            '10/11/2024', '10/12/2024', '10/13/2024', '10/14/2024',
+            '10/15/2024', '10/16/2024', '10/17/2024', '10/18/2024',
+            '10/19/2024', '10/20/2024', '10/21/2024'
+        ],
         datasets: [
             {
                 label: 'Organic Impressions',
-                data: [<%= weeklyTotals.week1.impressions.organic %>, <%= weeklyTotals.week2.impressions.organic %>],
-                backgroundColor: 'rgba(31,61,133,255)',
+                data: [
+                    350, 699, 641, 703,
+                    280, 148, 251, 430,
+                    982, 395, 537, 693,
+                    203, 172, 522
+                ],
+                backgroundColor: 'rgba(31,61,133,0.2)', // Set a semi-transparent color
                 borderColor: 'rgba(31,61,133,255)',
-                borderWidth: 1
+                borderWidth: 2,
+                fill: true // Fill the area under the line
             },
             {
                 label: 'Sponsored Impressions',
-                data: [<%= weeklyTotals.week1.impressions.sponsored %>, <%= weeklyTotals.week2.impressions.sponsored %>],
-                backgroundColor: 'rgba(189,208,42,255)',
+                data: [
+                    0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    2156, 3049
+                ],
+                backgroundColor: 'rgba(189,208,42,0.2)', // Set a semi-transparent color
                 borderColor: 'rgba(189,208,42,255)',
-                borderWidth: 1
+                borderWidth: 2,
+                fill: true // Fill the area under the line
             }
         ]
     };
 
     const impressionsCtx = document.getElementById('impressionsChart').getContext('2d');
     new Chart(impressionsCtx, {
-        type: 'bar',
+        type: 'line', // Change to 'line'
         data: impressionsData,
         options: {
             scales: {
@@ -335,37 +351,55 @@
         }
     });
 
-    // Bar chart for clicks (organic and sponsored)
-    const clicksData = {
-        labels: ['This Week', 'Last Week'],
-        datasets: [
-            {
-                label: 'Organic Clicks',
-                data: [<%= weeklyTotals.week1.clicks.organic %>, <%= weeklyTotals.week2.clicks.organic %>],
-                backgroundColor: 'rgba(31,61,133,255)',
-                borderColor: 'rgba(31,61,133,255)',
-                borderWidth: 1
-            },
-            {
-                label: 'Sponsored Clicks',
-                data: [<%= weeklyTotals.week1.clicks.sponsored %>, <%= weeklyTotals.week2.clicks.sponsored %>],
-                backgroundColor: 'rgba(189,208,42,255)',
-                borderColor: 'rgba(189,208,42,255)',
-                borderWidth: 1
-            }
-        ]
-    };
+    // Daily clicks data from your dataset
+        const clicksData = {
+            labels: [
+                '10/07/2024', '10/08/2024', '10/09/2024', '10/10/2024',
+                '10/11/2024', '10/12/2024', '10/13/2024', '10/14/2024',
+                '10/15/2024', '10/16/2024', '10/17/2024', '10/18/2024',
+                '10/19/2024', '10/20/2024', '10/21/2024'
+            ],
+            datasets: [
+                {
+                    label: 'Organic Clicks',
+                    data: [
+                        12, 36, 42, 30,
+                        12, 7, 21, 41,
+                        46, 13, 31, 41,
+                        13, 8, 25
+                    ],
+                    backgroundColor: 'rgba(31,61,133,0.2)', // Set a semi-transparent color
+                    borderColor: 'rgba(31,61,133,255)',
+                    borderWidth: 2,
+                    fill: true // Fill the area under the line
+                },
+                {
+                    label: 'Sponsored Clicks',
+                    data: [
+                        0, 0, 0, 0,
+                        0, 0, 0, 0,
+                        1, 0, 0, 0,
+                        0, 1, 0
+                    ],
+                    backgroundColor: 'rgba(189,208,42,0.2)', // Set a semi-transparent color
+                    borderColor: 'rgba(189,208,42,255)',
+                    borderWidth: 2,
+                    fill: true // Fill the area under the line
+                }
+            ]
+        };
 
-    const clicksCtx = document.getElementById('clicksChart').getContext('2d');
-    new Chart(clicksCtx, {
-        type: 'bar',
-        data: clicksData,
-        options: {
-            scales: {
-                y: { beginAtZero: true }
+        const clicksCtx = document.getElementById('clicksChart').getContext('2d');
+        new Chart(clicksCtx, {
+            type: 'line', // Change to 'line'
+            data: clicksData,
+            options: {
+                scales: {
+                    y: { beginAtZero: true }
+                }
             }
-        }
-    });
+        });
+
 </script>
 
 <h2 style="text-align: center; margin: top 50px;">Website Analysis</h2>
