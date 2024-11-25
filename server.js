@@ -14,24 +14,27 @@ const statsData = [
     { date: '10/12/2024', impressions: { organic: 148, sponsored: 0 }, clicks: { organic: 7, sponsored: 0 }, reactions: 4, comments: 0, engagementRate: 0.074324324 },
     { date: '10/13/2024', impressions: { organic: 251, sponsored: 0 }, clicks: { organic: 21, sponsored: 0 }, reactions: 5, comments: 0, engagementRate: 0.107569721 },
     { date: '10/14/2024', impressions: { organic: 430, sponsored: 0 }, clicks: { organic: 41, sponsored: 0 }, reactions: 24, comments: 4, engagementRate: 0.160465116 },
-    { date: '10/15/2024', impressions: { organic: 982, sponsored: 0 }, clicks: { organic: 46, sponsored: 0 }, reactions: 28, comments: 7, engagementRate: 0.083503055 },
-    { date: '10/16/2024', impressions: { organic: 395, sponsored: 0 }, clicks: { organic: 13, sponsored: 0 }, reactions: 15, comments: 0, engagementRate: 0.070886076 },
-    { date: '10/17/2024', impressions: { organic: 537, sponsored: 0 }, clicks: { organic: 31, sponsored: 0 }, reactions: 23, comments: 2, engagementRate: 0.106145251 },
-    { date: '10/18/2024', impressions: { organic: 693, sponsored: 0 }, clicks: { organic: 41, sponsored: 0 }, reactions: 31, comments: 2, engagementRate: 0.106782107 },
-    { date: '10/19/2024', impressions: { organic: 203, sponsored: 0 }, clicks: { organic: 13, sponsored: 0 }, reactions: 4, comments: 1, engagementRate: 0.088669951 },
-    { date: '10/20/2024', impressions: { organic: 172, sponsored: 2156 }, clicks: { organic: 8, sponsored: 1 }, reactions: 9, comments: 1, engagementRate: 0.008161512 },
-    { date: '10/21/2024', impressions: { organic: 522, sponsored: 3049 }, clicks: { organic: 25, sponsored: 0 }, reactions: 17, comments: 0, engagementRate: 0.012041445 }
+    { date: '11/09/2024', impressions: { organic: 68, sponsored: 125 }, clicks: { organic: 3, sponsored: 0 }, reactions: 2, comments: 0, engagementRate: 0.025906736 },
+    { date: '11/10/2024', impressions: { organic: 156, sponsored: 303 }, clicks: { organic: 6, sponsored: 1 }, reactions: 1, comments: 0, engagementRate: 0.017429194 },
+    { date: '11/11/2024', impressions: { organic: 390, sponsored: 55 }, clicks: { organic: 11, sponsored: 0 }, reactions: 14, comments: 0, engagementRate: 0.060674157 },
+    { date: '11/12/2024', impressions: { organic: 1362, sponsored: 0 }, clicks: { organic: 325, sponsored: 0 }, reactions: 27, comments: 3, engagementRate: 0.260646109 },
+    { date: '11/13/2024', impressions: { organic: 913, sponsored: 0 }, clicks: { organic: 130, sponsored: 0 }, reactions: 28, comments: 3, engagementRate: 0.177437021 },
+    { date: '11/14/2024', impressions: { organic: 458, sponsored: 0 }, clicks: { organic: 57, sponsored: 0 }, reactions: 15, comments: 1, engagementRate: 0.159388646 },
+    { date: '11/15/2024', impressions: { organic: 264, sponsored: 0 }, clicks: { organic: 21, sponsored: 0 }, reactions: 7, comments: 0, engagementRate: 0.106060606 }
 ];
 
 
+
 // Competitor Data from 09/21/2024 to 10/05/2024
+
 const competitorsData = [
-    { name: "WEKO", followers: 1490, newFollowers: 21, interactions: 74, posts: 11 },
-    { name: "Sellmore GmbH", followers: 1007, newFollowers: 21, interactions: 65, posts: 3 },
-    { name: "isales GmbH", followers: 558, newFollowers: 9, interactions: 104, posts: 2 },
-    { name: "CompData Computer GmbH", followers: 712, newFollowers: 62, interactions: 118, posts: 5 },
-    { name: "DPS Business Solutions", followers: 2072, newFollowers: 122, interactions: 163, posts: 5 },
-    { name: "Datatronic Software AG", followers: 1429, newFollowers: 9, interactions: 195, posts: 14 }
+    { name: "WEKO", followers: 1573, newFollowers: 21, interactions: 34, posts: 10 },
+    { name: "Sellmore GmbH", followers: 1069, newFollowers: 13, interactions: 59, posts: 5 },
+    { name: "isales GmbH", followers: 609, newFollowers: 14, interactions: 47, posts: 2 },
+    { name: "CompData Computer GmbH", followers: 818, newFollowers: 30, interactions: 149, posts: 3 },
+    { name: "System AG@data GmbH", followers: 975, newFollowers: 7, interactions: 55, posts: 5 },
+    { name: "DPS Business Solutions", followers: 2332, newFollowers: 62, interactions: 188, posts: 7 },
+    { name: "Datatronic Software AG", followers: 1448, newFollowers: 7, interactions: 122, posts: 23 }
 ];
 
 // Website Analytics Data for 90 Days in Weekly Increments
@@ -43,42 +46,38 @@ const weeklyIncrements = Array.from({ length: 14 }, (_, i) => {
 });
 
 const websiteData = {
-    activeUsers: [64, 159, 210, 186, 182, 188, 199, 248, 266, 399, 230, 351, 347, 8],
-    newUsers: [64, 157, 189, 157, 137, 145, 161, 203, 228, 333, 189, 264, 238, 6],
-    weeklyIncrements: weeklyIncrements,  // Include the calculated weekly dates
-    averageEngagementTime: [/* same as before */],
+    activeUsers: [157, 199, 248, 266, 399, 230, 351, 347, 370, 398, 426, 475, 446, 10],
+    newUsers: [118, 161, 203, 228, 333, 189, 264, 238, 248, 297, 317, 298, 261, 8],
+    weeklyIncrements: ["2024-08-27", "2024-09-03", "2024-09-10", "2024-09-17", "2024-09-24", "2024-10-01", "2024-10-08", "2024-10-15", "2024-10-22", "2024-10-29", "2024-11-05", "2024-11-12", "2024-11-19", "2024-11-24"], // Weekly starting dates
+    averageEngagementTime: [/* retain or add new values as needed */],
     userSources: {
-        direct: 442,
-        organicSearch: 282,
-        paidSearch: 169,
-        referral: 75,
-        organicSocial: 43
+        direct: 794,
+        organicSearch: 344,
+        paidSearch: 187,
+        referral: 105,
+        organicSocial: 94
     },
     activeUsersByCountry: {
-        DE: 992,
-        AT: 16,
-        IE: 12,
-        IN: 11,
-        CH: 8,
-        ID: 8,
-        ES: 7
+        DE: 1339,
+        IN: 49,
+        AT: 18,
+        IE: 18,
+        ID: 14,
+        GR: 9,
+        CH: 8
     },
     pageViews: {
-        'Business Software | für ERP, HR, IT Betr. und Cloud-Hosting': 888,
-        'DPS|BS Campus ▶ All in one Lernplattform': 444,
-        'DPS|BS Campus': 422,
-        'Anmelden - DPS|BS Campus': 358,
-        'Webinare - DPS Business Solutions': 271,
-        'Entdecken - DPS|BS Campus': 182,
-        'IT Systemhaus | Ihr Ansprechpartner für Software und IT': 131,
-        'Mein Profil - DPS|BS Campus': 125,
-        'Wie eine effektive Unternehmensstruktur Ihr Geschäft vorantreibt': 113,
-        'Blog - DPS Business Solutions': 109,
-        'Meine Kurse - DPS|BS Campus': 102,
-        'Referenzen aus den unterschiedlichsten Branchen': 87,
-        'Vereinscampus - DPS Business Solutions': 87,
-        '- - DPS|BS Campus': 82,
-        'Sage HR Suite | Integrierte Personalsoftware': 77
+        'Business Software | für ERP, HR, IT Betr. und Cloud-Hosting': 999,
+        'SageMee: Sage Online - Learnplattform': 847,
+        'DPS|BS Campus ▶ All in one Lernplattform': 595,
+        'SAGE HR SUITE - SageMee': 573,
+        'DPS|BS Campus': 513,
+        'Vereinscampus - DPS Business Solutions': 454,
+        'SAGE 100 - SageMee': 353,
+        'Webinar: Vereinsthemen abbilden und Sponsoren gewinnen': 336,
+        'Webinare - DPS Business Solutions': 317,
+        'Anmelden - DPS|BS Campus': 276,
+        'Entdecken - DPS|BS Campus': 167
     }
 };
 

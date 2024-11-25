@@ -21,6 +21,45 @@
 <body>
     <h1 style="text-align: center;">DPS-BS Marketing Dashboard</h1>
 
+<div style="display: flex; justify-content: space-around; gap: 16px; margin: 16px; flex-wrap: wrap;">
+    <!-- Card 1 -->
+    <div
+        style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color: #f9f9f9; text-align: center; flex: 1; max-width: 300px;">
+        <h3 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 8px;">Month over Month Growth of Users
+</h3>
+        <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 16px;">Nov, 2024 vs Oct, 2024</p>
+        <div style="display: flex; justify-content: center; gap: 16px; font-size: 1em;">
+            <span style="font-size: 1em; color: #2c3e50;">User: <strong
+                    style="font-size: 1.4em; color: #2ecc71;">1.3K</strong></span>
+            <span style="font-size: 1.2em; color: #27ae60;">+24.0%</span>
+        </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div
+        style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color: #f9f9f9; text-align: center; flex: 1; max-width: 300px;">
+        <h3 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 8px;">Form Submission</h3>
+        <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 16px;">Last 14 days</p>
+        <div style="display: flex; justify-content: center; gap: 16px; font-size: 1em;">
+            <span style="font-size: 1em; color: #2c3e50;">No. of submissions: <strong
+                    style="font-size: 1.4em; color: #2ecc71;">269</strong></span>
+            <span style="font-size: 1.2em; color: #27ae60;"></span>
+        </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div
+        style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color: #f9f9f9; text-align: center; flex: 1; max-width: 300px;">
+        <h3 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 8px;">Linkedin new followers</h3>
+        <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 16px;">period of 30 days</p>
+        <div style="display: flex; justify-content: center; gap: 16px; font-size: 1em;">
+            <span style="font-size: 1em; color: #2c3e50;">Followers: <strong
+                    style="font-size: 1.4em; color: #2ecc71;">167</strong></span>
+            <span style="font-size: 1.2em; color: #27ae60;">-3.5%</span>
+        </div>
+    </div>
+</div>
+
     <!-- Bar chart for Total Followers -->
     <div class="chart-container">
         <div class="chart-wrapper">
@@ -303,13 +342,17 @@
             }
         });
 
-    // Daily impressions data from your dataset
+    // Updated daily impressions data
     const impressionsData = {
         labels: [
             '10/07/2024', '10/08/2024', '10/09/2024', '10/10/2024',
             '10/11/2024', '10/12/2024', '10/13/2024', '10/14/2024',
             '10/15/2024', '10/16/2024', '10/17/2024', '10/18/2024',
-            '10/19/2024', '10/20/2024', '10/21/2024'
+            '10/19/2024', '10/20/2024', '10/21/2024', '11/09/2024',
+            '11/10/2024', '11/11/2024', '11/12/2024', '11/13/2024',
+            '11/14/2024', '11/15/2024', '11/16/2024', '11/17/2024',
+            '11/18/2024', '11/19/2024', '11/20/2024', '11/21/2024',
+            '11/22/2024', '11/23/2024'
         ],
         datasets: [
             {
@@ -318,7 +361,11 @@
                     350, 699, 641, 703,
                     280, 148, 251, 430,
                     982, 395, 537, 693,
-                    203, 172, 522
+                    203, 172, 522, 68,
+                    156, 390, 1362, 913,
+                    458, 264, 191, 126,
+                    533, 550, 527, 394,
+                    212, 211
                 ],
                 backgroundColor: 'rgba(31,61,133,0.2)', // Set a semi-transparent color
                 borderColor: 'rgba(31,61,133,255)',
@@ -329,8 +376,13 @@
                 label: 'Sponsored Impressions',
                 data: [
                     0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0, 0, 
-                    2156, 3049
+                    0, 0, 0, 0,
+                    0, 0, 0, 0,
+                    0, 2156, 3049, 125,
+                    303, 55, 0, 0,
+                    0, 0, 0, 0,
+                    0, 0, 0, 15,
+                    5, 9
                 ],
                 backgroundColor: 'rgba(189,208,42,0.2)', // Set a semi-transparent color
                 borderColor: 'rgba(189,208,42,255)',
@@ -351,54 +403,66 @@
         }
     });
 
-    // Daily clicks data from your dataset
-        const clicksData = {
-            labels: [
-                '10/07/2024', '10/08/2024', '10/09/2024', '10/10/2024',
-                '10/11/2024', '10/12/2024', '10/13/2024', '10/14/2024',
-                '10/15/2024', '10/16/2024', '10/17/2024', '10/18/2024',
-                '10/19/2024', '10/20/2024', '10/21/2024'
-            ],
-            datasets: [
-                {
-                    label: 'Organic Clicks',
-                    data: [
-                        12, 36, 42, 30,
-                        12, 7, 21, 41,
-                        46, 13, 31, 41,
-                        13, 8, 25
-                    ],
-                    backgroundColor: 'rgba(31,61,133,0.2)', // Set a semi-transparent color
-                    borderColor: 'rgba(31,61,133,255)',
-                    borderWidth: 2,
-                    fill: true // Fill the area under the line
-                },
-                {
-                    label: 'Sponsored Clicks',
-                    data: [
-                        0, 0, 0, 0,
-                        0, 0, 0, 0,
-                        1, 0, 0, 0,
-                        0, 1, 0
-                    ],
-                    backgroundColor: 'rgba(189,208,42,0.2)', // Set a semi-transparent color
-                    borderColor: 'rgba(189,208,42,255)',
-                    borderWidth: 2,
-                    fill: true // Fill the area under the line
-                }
-            ]
-        };
-
-        const clicksCtx = document.getElementById('clicksChart').getContext('2d');
-        new Chart(clicksCtx, {
-            type: 'line', // Change to 'line'
-            data: clicksData,
-            options: {
-                scales: {
-                    y: { beginAtZero: true }
-                }
+    // Updated daily clicks data
+    const clicksData = {
+        labels: [
+            '10/07/2024', '10/08/2024', '10/09/2024', '10/10/2024',
+            '10/11/2024', '10/12/2024', '10/13/2024', '10/14/2024',
+            '10/15/2024', '10/16/2024', '10/17/2024', '10/18/2024',
+            '10/19/2024', '10/20/2024', '10/21/2024', '11/09/2024',
+            '11/10/2024', '11/11/2024', '11/12/2024', '11/13/2024',
+            '11/14/2024', '11/15/2024', '11/16/2024', '11/17/2024',
+            '11/18/2024', '11/19/2024', '11/20/2024', '11/21/2024',
+            '11/22/2024', '11/23/2024'
+        ],
+        datasets: [
+            {
+                label: 'Organic Clicks',
+                data: [
+                    12, 36, 42, 30,
+                    12, 7, 21, 41,
+                    46, 13, 31, 41,
+                    13, 8, 25, 3,
+                    6, 11, 325, 130,
+                    57, 21, 17, 9,
+                    44, 162, 116, 48,
+                    14, 2
+                ],
+                backgroundColor: 'rgba(31,61,133,0.2)', // Set a semi-transparent color
+                borderColor: 'rgba(31,61,133,255)',
+                borderWidth: 2,
+                fill: true // Fill the area under the line
+            },
+            {
+                label: 'Sponsored Clicks',
+                data: [
+                    0, 0, 0, 0,
+                    0, 0, 0, 0,
+                    1, 0, 0, 0,
+                    0, 1, 0, 0,
+                    1, 0, 0, 0,
+                    0, 0, 0, 0,
+                    0, 0, 0, 1,
+                    0, 0
+                ],
+                backgroundColor: 'rgba(189,208,42,0.2)', // Set a semi-transparent color
+                borderColor: 'rgba(189,208,42,255)',
+                borderWidth: 2,
+                fill: true // Fill the area under the line
             }
-        });
+        ]
+    };
+
+    const clicksCtx = document.getElementById('clicksChart').getContext('2d');
+    new Chart(clicksCtx, {
+        type: 'line', // Change to 'line'
+        data: clicksData,
+        options: {
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
 
 </script>
 
@@ -430,7 +494,7 @@
 
 
 <div class="chart-container"
-    style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 80vh;">
+    style="display: flex; flex-direction: column; margin-top: 5px; justify-content: center; align-items: center; height: 80vh;">
     <!-- Center both title and chart -->
     <h3 style="text-align: center;">Website: Views by Page</h3>
     <canvas id="pageViewsChart" style="width: 20vw; height: 20vh;"></canvas> <!-- Half screen width and height -->
@@ -506,6 +570,7 @@ const websiteData = <%- JSON.stringify(websiteData) %>;
         }
     });
 </script>
+
 
 <div style="text-align: center; margin-top: 40px;">
     <p style="font-size: 14px;">
