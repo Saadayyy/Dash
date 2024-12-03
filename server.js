@@ -6,35 +6,34 @@ app.set('view engine', 'ejs');
 
 // LinkedIn Data for the last 14 days (grouped by week)
 const statsData = [
-    { date: '10/07/2024', impressions: { organic: 350, sponsored: 0 }, clicks: { organic: 12, sponsored: 0 }, reactions: 19, comments: 0, engagementRate: 0.088571429 },
-    { date: '10/08/2024', impressions: { organic: 699, sponsored: 0 }, clicks: { organic: 36, sponsored: 0 }, reactions: 32, comments: 2, engagementRate: 0.100143062 },
-    { date: '10/09/2024', impressions: { organic: 641, sponsored: 0 }, clicks: { organic: 42, sponsored: 0 }, reactions: 28, comments: 3, engagementRate: 0.11700468 },
-    { date: '10/10/2024', impressions: { organic: 703, sponsored: 0 }, clicks: { organic: 30, sponsored: 0 }, reactions: 27, comments: 1, engagementRate: 0.086770982 },
-    { date: '10/11/2024', impressions: { organic: 280, sponsored: 0 }, clicks: { organic: 12, sponsored: 0 }, reactions: 7, comments: 0, engagementRate: 0.071428571 },
-    { date: '10/12/2024', impressions: { organic: 148, sponsored: 0 }, clicks: { organic: 7, sponsored: 0 }, reactions: 4, comments: 0, engagementRate: 0.074324324 },
-    { date: '10/13/2024', impressions: { organic: 251, sponsored: 0 }, clicks: { organic: 21, sponsored: 0 }, reactions: 5, comments: 0, engagementRate: 0.107569721 },
-    { date: '10/14/2024', impressions: { organic: 430, sponsored: 0 }, clicks: { organic: 41, sponsored: 0 }, reactions: 24, comments: 4, engagementRate: 0.160465116 },
-    { date: '11/09/2024', impressions: { organic: 68, sponsored: 125 }, clicks: { organic: 3, sponsored: 0 }, reactions: 2, comments: 0, engagementRate: 0.025906736 },
-    { date: '11/10/2024', impressions: { organic: 156, sponsored: 303 }, clicks: { organic: 6, sponsored: 1 }, reactions: 1, comments: 0, engagementRate: 0.017429194 },
-    { date: '11/11/2024', impressions: { organic: 390, sponsored: 55 }, clicks: { organic: 11, sponsored: 0 }, reactions: 14, comments: 0, engagementRate: 0.060674157 },
-    { date: '11/12/2024', impressions: { organic: 1362, sponsored: 0 }, clicks: { organic: 325, sponsored: 0 }, reactions: 27, comments: 3, engagementRate: 0.260646109 },
-    { date: '11/13/2024', impressions: { organic: 913, sponsored: 0 }, clicks: { organic: 130, sponsored: 0 }, reactions: 28, comments: 3, engagementRate: 0.177437021 },
-    { date: '11/14/2024', impressions: { organic: 458, sponsored: 0 }, clicks: { organic: 57, sponsored: 0 }, reactions: 15, comments: 1, engagementRate: 0.159388646 },
-    { date: '11/15/2024', impressions: { organic: 264, sponsored: 0 }, clicks: { organic: 21, sponsored: 0 }, reactions: 7, comments: 0, engagementRate: 0.106060606 }
+    { date: '11/17/2024', impressions: { organic: 126, sponsored: 0 }, clicks: { organic: 9, sponsored: 0 }, reactions: 2, comments: 0, engagementRate: 0.087301587, shares: 0 },
+    { date: '11/18/2024', impressions: { organic: 533, sponsored: 0 }, clicks: { organic: 44, sponsored: 0 }, reactions: 19, comments: 2, engagementRate: 0.123827392, shares: 1 },
+    { date: '11/19/2024', impressions: { organic: 550, sponsored: 0 }, clicks: { organic: 162, sponsored: 0 }, reactions: 13, comments: 1, engagementRate: 0.32, shares: 0 },
+    { date: '11/20/2024', impressions: { organic: 527, sponsored: 0 }, clicks: { organic: 116, sponsored: 0 }, reactions: 19, comments: 1, engagementRate: 0.258064516, shares: 0 },
+    { date: '11/21/2024', impressions: { organic: 394, sponsored: 15 }, clicks: { organic: 48, sponsored: 1 }, reactions: 13, comments: 1, engagementRate: 0.15403423, shares: 0 },
+    { date: '11/22/2024', impressions: { organic: 212, sponsored: 5 }, clicks: { organic: 14, sponsored: 0 }, reactions: 8, comments: -1, engagementRate: 0.096774194, shares: 0 },
+    { date: '11/23/2024', impressions: { organic: 211, sponsored: 9 }, clicks: { organic: 2, sponsored: 0 }, reactions: 1, comments: 0, engagementRate: 0.013636364, shares: 0 },
+    { date: '11/24/2024', impressions: { organic: 118, sponsored: 13 }, clicks: { organic: 30, sponsored: 0 }, reactions: 7, comments: 0, engagementRate: 0.282442748, shares: 0 },
+    { date: '11/25/2024', impressions: { organic: 385, sponsored: 719 }, clicks: { organic: 14, sponsored: 3 }, reactions: 14, comments: 0, engagementRate: 0.02807971, shares: 0 },
+    { date: '11/26/2024', impressions: { organic: 178, sponsored: 70 }, clicks: { organic: 27, sponsored: 0 }, reactions: 4, comments: 0, engagementRate: 0.125, shares: 0 },
+    { date: '11/27/2024', impressions: { organic: 435, sponsored: 46 }, clicks: { organic: 28, sponsored: 0 }, reactions: 16, comments: 2, engagementRate: 0.097713098, shares: 1 },
+    { date: '11/28/2024', impressions: { organic: 413, sponsored: 151 }, clicks: { organic: 24, sponsored: 1 }, reactions: 18, comments: 0, engagementRate: 0.078014184, shares: 1 },
+    { date: '11/29/2024', impressions: { organic: 279, sponsored: 8 }, clicks: { organic: 12, sponsored: 0 }, reactions: 12, comments: 0, engagementRate: 0.087108014, shares: 1 },
+    { date: '11/30/2024', impressions: { organic: 118, sponsored: 11 }, clicks: { organic: 9, sponsored: 0 }, reactions: 2, comments: 0, engagementRate: 0.085271318, shares: 0 },
+    { date: '12/01/2024', impressions: { organic: 341, sponsored: 711 }, clicks: { organic: 36, sponsored: 3 }, reactions: 12, comments: 2, engagementRate: null, shares: 2 }
 ];
-
 
 
 // Competitor Data from 09/21/2024 to 10/05/2024
 
 const competitorsData = [
-    { name: "WEKO", followers: 1573, newFollowers: 21, interactions: 34, posts: 10 },
-    { name: "Sellmore GmbH", followers: 1069, newFollowers: 13, interactions: 59, posts: 5 },
-    { name: "isales GmbH", followers: 609, newFollowers: 14, interactions: 47, posts: 2 },
-    { name: "CompData Computer GmbH", followers: 818, newFollowers: 30, interactions: 149, posts: 3 },
-    { name: "System AG@data GmbH", followers: 975, newFollowers: 7, interactions: 55, posts: 5 },
-    { name: "DPS Business Solutions", followers: 2332, newFollowers: 62, interactions: 188, posts: 7 },
-    { name: "Datatronic Software AG", followers: 1448, newFollowers: 7, interactions: 122, posts: 23 }
+    { name: "WEKO", followers: 1580, newFollowers: 8, interactions: 18, posts: 11 },
+    { name: "Sellmore GmbH", followers: 1073, newFollowers: 11, interactions: 95, posts: 4 },
+    { name: "isales GmbH", followers: 615, newFollowers: 13, interactions: 54, posts: 3 },
+    { name: "CompData Computer GmbH", followers: 836, newFollowers: 26, interactions: 147, posts: 4 },
+    { name: "System AG@data GmbH", followers: 976, newFollowers: 2, interactions: 61, posts: 7 },
+    { name: "DPS Business Solutions", followers: 2372, newFollowers: 61, interactions: 174, posts: 10 },
+    { name: "Datatronic Software AG", followers: 1452, newFollowers: 6, interactions: 203, posts: 26 }
 ];
 
 // Website Analytics Data for 90 Days in Weekly Increments
@@ -58,13 +57,9 @@ const websiteData = {
         organicSocial: 94
     },
     activeUsersByCountry: {
-        DE: 1339,
-        IN: 49,
-        AT: 18,
-        IE: 18,
-        ID: 14,
-        GR: 9,
-        CH: 8
+        Desktop: 1024,
+        Mobile: 479,
+        Tablet: 4
     },
     pageViews: {
         'Business Software | für ERP, HR, IT Betr. und Cloud-Hosting': 999,
