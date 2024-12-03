@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marketing Dashboard</title>    
+    <title>Marketing Dashboard</title>
     <style>
         .chart-container {
             display: flex;
@@ -14,6 +14,67 @@
         .chart-wrapper {
             width: 45%;
         }
+
+                /* Side card popup */
+        .popup-card {
+            position: fixed;
+            top: 10%;
+            right: 2%;
+            height: 75%;
+            width: 25%;
+            border: 1px solid rgba(31,61,133,255);
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 2px 4px rgba(31,61,133,255);
+            background-color: rgba(31,61,133,255);
+            overflow-y: auto;
+            display: none; /* Hidden by default */
+            z-index: 1000; /* Ensure it appears on top */
+        }
+
+        .popup-card h2 {
+            font-size: 1.5em;
+            color: rgba(189,208,42,255);
+            margin-bottom: 12px;
+        }
+
+        .popup-card p {
+            font-size: 1em;
+            color: #7f8c8d;
+            line-height: 1.5;
+        }
+
+        .popup-card .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(189,208,42,255);
+            color:rgba(31,61,133,255);
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .open-popup-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: rgba(189,208,42,255);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Ensure it appears above other elements */
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -21,44 +82,185 @@
 <body>
     <h1 style="text-align: center;">DPS-BS Marketing Dashboard</h1>
 
-<div style="display: flex; justify-content: space-around; gap: 16px; margin: 16px; flex-wrap: wrap;">
-    <!-- Card 1 -->
-    <div
-        style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color: #f9f9f9; text-align: center; flex: 1; max-width: 300px;">
-        <h3 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 8px;">Month over Month Growth of Users
-</h3>
-        <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 16px;">Nov, 2024 vs Oct, 2024</p>
-        <div style="display: flex; justify-content: center; gap: 16px; font-size: 1em;">
-            <span style="font-size: 1em; color: #2c3e50;">User: <strong
-                    style="font-size: 1.4em; color: #2ecc71;">1.3K</strong></span>
-            <span style="font-size: 1.2em; color: #27ae60;">+24.0%</span>
+    <div style="display: flex; justify-content: space-around; gap: 16px; margin: 16px; flex-wrap: wrap;">
+        <!-- Card 1 -->
+        <div
+            style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color: #f9f9f9; text-align: center; flex: 1; max-width: 300px;">
+            <h3 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 8px;">Month over Month Growth of Users</h3>
+            <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 16px;">Nov, 2024 vs Oct, 2024</p>
+            <div style="display: flex; justify-content: center; gap: 16px; font-size: 1em;">
+                <span style="font-size: 1em; color: #2c3e50;">User: <strong
+                        style="font-size: 1.4em; color: #2ecc71;">1.3K</strong></span>
+                <span style="font-size: 1.2em; color: #27ae60;">+24.0%</span>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+            style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color: #f9f9f9; text-align: center; flex: 1; max-width: 300px;">
+            <h3 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 8px;">Form Submission</h3>
+            <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 16px;">Last 14 days</p>
+            <div style="display: flex; justify-content: center; gap: 16px; font-size: 1em;">
+                <span style="font-size: 1em; color: #2c3e50;">No. of submissions: <strong
+                        style="font-size: 1.4em; color: #2ecc71;">269</strong></span>
+                <span style="font-size: 1.2em; color: #27ae60;"></span>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div
+            style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color: #f9f9f9; text-align: center; flex: 1; max-width: 300px;">
+            <h3 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 8px;">Leads Generated</h3>
+            <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 16px;">Cold Leads: 15000</p>
+            <div style="display: flex; justify-content: center; gap: 16px; font-size: 1em;">
+                <span style="font-size: 1em; color: #2c3e50;">Warm: <strong
+                        style="font-size: 1.4em; color: #2ecc71;">704</strong></span>
+                <span style="font-size: 1.2em; color: #27ae60;"></span>
+            </div>
         </div>
     </div>
 
-    <!-- Card 2 -->
-    <div
-        style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color: #f9f9f9; text-align: center; flex: 1; max-width: 300px;">
-        <h3 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 8px;">Form Submission</h3>
-        <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 16px;">Last 14 days</p>
-        <div style="display: flex; justify-content: center; gap: 16px; font-size: 1em;">
-            <span style="font-size: 1em; color: #2c3e50;">No. of submissions: <strong
-                    style="font-size: 1.4em; color: #2ecc71;">269</strong></span>
-            <span style="font-size: 1.2em; color: #27ae60;"></span>
-        </div>
+    <!-- Chart Section -->
+    <div class="chart-container"
+        style="display: flex; justify-content: center; align-items: center; margin: 16px auto; width: 75vw; height: 50vh;">
+        <canvas id="visitsChart"></canvas>
     </div>
 
-    <!-- Card 3 -->
-    <div
-        style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color: #f9f9f9; text-align: center; flex: 1; max-width: 300px;">
-        <h3 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 8px;">Linkedin new followers</h3>
-        <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 16px;">period of 30 days</p>
-        <div style="display: flex; justify-content: center; gap: 16px; font-size: 1em;">
-            <span style="font-size: 1em; color: #2c3e50;">Followers: <strong
-                    style="font-size: 1.4em; color: #2ecc71;">167</strong></span>
-            <span style="font-size: 1.2em; color: #27ae60;">-3.5%</span>
-        </div>
-    </div>
+<!-- Popup Card -->
+<div class="popup-card" id="popupCard">
+    <button class="close-btn" id="closePopup">&times;</button>
+    <h2>Key Insights</h2>
+    <p>
+        Our marketing efforts have led to consistent growth in user engagement, with a noticeable increase in website
+        traffic
+        and form submissions. We have Generated about 15000 Leads, about 45% were generated internally and rest from external sources(Schwarzer & DataCollection Company). We have automated the outreach via Linkedin and are turning these leads into MQLs.
+    </p>
+    <p>
+        Next steps include enhancing our social media strategy and targeting high-converting platforms for further user
+        acquisition.
+    </p>
 </div>
+
+<!-- Open Popup Button -->
+<button class="open-popup-btn" id="openPopup">Open Insights</button>
+
+<script>
+    // Popup handling
+    const popupCard = document.getElementById('popupCard');
+    const openPopupBtn = document.getElementById('openPopup');
+    const closePopupBtn = document.getElementById('closePopup');
+
+    openPopupBtn.addEventListener('click', () => {
+        popupCard.style.display = 'block';
+    });
+
+    closePopupBtn.addEventListener('click', () => {
+        popupCard.style.display = 'none';
+    });
+</script>
+
+    <script>
+        // Create the chart
+        const ctx = document.getElementById('visitsChart').getContext('2d');
+        const visitsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2024-05', '2024-06', '2024-07', '2024-08', '2024-09', '2024-10', '2024-11'],
+                datasets: [
+                    {
+                        label: 'datatronic.de',
+                        data: [790, 909, 1059, 1131, 1049, 1201, 1185],
+                        borderColor: '#1f77b4',
+                        backgroundColor: 'rgba(31, 119, 180, 0.2)',
+                        borderWidth: 2,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'sellmore.de',
+                        data: [325, 333, 915, 923, 1412, 1204, 1629],
+                        borderColor: '#ff7f0e',
+                        backgroundColor: 'rgba(255, 127, 14, 0.2)',
+                        borderWidth: 2,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'dps-bs.de',
+                        data: [0, 0, 314, 2862, 3717, 3865, 4977],
+                        borderColor: '#d62728',
+                        backgroundColor: 'rgba(214, 39, 40, 0.3)',
+                        borderWidth: 4, /* Thicker line */
+                        tension: 0.4
+                    },
+                    {
+                        label: 'isales.de',
+                        data: [273, 279, 256, 252, 253, 317, 349],
+                        borderColor: '#9467bd',
+                        backgroundColor: 'rgba(148, 103, 189, 0.2)',
+                        borderWidth: 2,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'compdata.de',
+                        data: [348, 363, 379, 352, 377, 447, 416],
+                        borderColor: '#2ca02c',
+                        backgroundColor: 'rgba(44, 160, 44, 0.2)',
+                        borderWidth: 2,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Monthly Website Visits',
+                        font: {
+                            size: 18,
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        },
+                        color: '#333'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return `${context.dataset.label}: ${context.raw}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Month'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Visits'
+                        },
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1000
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
 
     <!-- Bar chart for Total Followers -->
     <div class="chart-container">
@@ -141,7 +343,6 @@
     <div style="width: 50%; margin-top: 5px;">
         <canvas id="engagementChart" style="width: 100%; height: 20%;"></canvas>
     </div>
-
 </div>
 
 <script>
