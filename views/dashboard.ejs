@@ -86,24 +86,24 @@
         <!-- Card 1 -->
         <div
             style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color: #f9f9f9; text-align: center; flex: 1; max-width: 300px;">
-            <h3 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 8px;">Month over Month Growth of Users</h3>
+            <h3 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 8px;">Month over Month Growth of Website Users</h3>
             <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 16px;">Nov, 2024 vs Oct, 2024</p>
             <div style="display: flex; justify-content: center; gap: 16px; font-size: 1em;">
                 <span style="font-size: 1em; color: #2c3e50;">User: <strong
-                        style="font-size: 1.4em; color: #2ecc71;">1.3K</strong></span>
-                <span style="font-size: 1.2em; color: #27ae60;">+24.0%</span>
+                        style="font-size: 1.4em; color: #2ecc71;">1.0K</strong></span>
+                <span style="font-size: 1.2em; color: #27ae60;">+15.3%</span>
             </div>
         </div>
 
         <!-- Card 2 -->
         <div
             style="border: 1px solid #ddd; border-radius: 8px; padding: 16px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color: #f9f9f9; text-align: center; flex: 1; max-width: 300px;">
-            <h3 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 8px;">Web Form Submission</h3>
-            <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 16px;">Last 14 days</p>
+            <h3 style="font-size: 1.2em; color: #2c3e50; margin-bottom: 8px;">Website Form Submission(90 days)</h3>
+            <p style="font-size: 0.9em; color: #7f8c8d; margin-bottom: 16px;">Webinare, Newsletter, Demos & etc</p>
             <div style="display: flex; justify-content: center; gap: 16px; font-size: 1em;">
                 <span style="font-size: 1em; color: #2c3e50;">No. of submissions: <strong
-                        style="font-size: 1.4em; color: #2ecc71;">269</strong></span>
-                <span style="font-size: 1.2em; color: #27ae60;"></span>
+                        style="font-size: 1.4em; color: #2ecc71;">1430</strong></span>
+                <span style="font-size: 1.2em; color: #27ae60;">+120.11%</span>
             </div>
         </div>
 
@@ -432,11 +432,11 @@
     <script>
         // Bar chart for total followers
         const totalFollowersData = {
-            labels: ['DPS-BS', 'WEKO', 'Sellmore GmbH', 'isales GmbH', 'CompData Computer GmbH', 'Datatronic Software GmbH'],
+            labels: ['DPS-BS',  'Datatronic Software GmbH', 'WEKO', 'Sellmore GmbH', 'isales GmbH', 'CompData Computer GmbH'],
             datasets: [
                 {
                     label: 'Total Followers',
-                    data: [2039, 1476, 997, 557, 687, 1429],
+                    data: [2449, 1455, 1588, 1079, 619, 862],
                     backgroundColor: [
                         'rgba(31,61,133,255)', // DPS-BS - blue
                         'rgba(200, 200, 200, 0.7)', // WEKO - gray
@@ -489,11 +489,11 @@
 
         // Bar chart for new followers
         const newFollowersData = {
-            labels: ['DPS-BS', 'WEKO', 'Sellmore GmbH', 'isales GmbH', 'CompData Computer GmbH', 'Datatronic Software GmbH'],
+            labels: ['DPS-BS', 'Datatronic Software GmbH', 'WEKO', 'Sellmore GmbH', 'isales GmbH', 'CompData Computer GmbH'],
             datasets: [
                 {
                     label: 'New Followers',
-                    data: [50, 23, 19, 4, 2, 9], // Example data
+                    data: [103, 8, 11, 7, 6, 19], // Example data
                     backgroundColor: [
                         'rgba(31,61,133,255)', // DPS-BS - blue
                         'rgba(200, 200, 200, 0.7)', // WEKO - gray
@@ -543,55 +543,32 @@
             }
         });
 
-    // Updated daily impressions data
     const impressionsData = {
         labels: [
-            '10/07/2024', '10/08/2024', '10/09/2024', '10/10/2024',
-            '10/11/2024', '10/12/2024', '10/13/2024', '10/14/2024',
-            '10/15/2024', '10/16/2024', '10/17/2024', '10/18/2024',
-            '10/19/2024', '10/20/2024', '10/21/2024', '11/09/2024',
-            '11/10/2024', '11/11/2024', '11/12/2024', '11/13/2024',
-            '11/14/2024', '11/15/2024', '11/16/2024', '11/17/2024',
-            '11/18/2024', '11/19/2024', '11/20/2024', '11/21/2024',
-            '11/22/2024', '11/23/2024'
+            '11/30/2024', '12/01/2024', '12/02/2024', '12/03/2024', '12/04/2024',
+            '12/05/2024', '12/06/2024', '12/07/2024', '12/08/2024', '12/09/2024',
+            '12/10/2024', '12/11/2024', '12/12/2024', '12/13/2024', '12/14/2024'
         ],
         datasets: [
             {
                 label: 'Organic Impressions',
-                data: [
-                    350, 699, 641, 703,
-                    280, 148, 251, 430,
-                    982, 395, 537, 693,
-                    203, 172, 522, 68,
-                    156, 390, 1362, 913,
-                    458, 264, 191, 126,
-                    533, 550, 527, 394,
-                    212, 211
-                ],
-                backgroundColor: 'rgba(31,61,133,0.2)', // Set a semi-transparent color
+                data: [118, 341, 875, 828, 579, 488, 607, 305, 411, 743, 660, 444, 392, 554, 326],
+                backgroundColor: 'rgba(31,61,133,0.2)',
                 borderColor: 'rgba(31,61,133,255)',
                 borderWidth: 2,
-                fill: true // Fill the area under the line
+                fill: true
             },
             {
                 label: 'Sponsored Impressions',
-                data: [
-                    0, 0, 0, 0,
-                    0, 0, 0, 0,
-                    0, 0, 0, 0,
-                    0, 2156, 3049, 125,
-                    303, 55, 0, 0,
-                    0, 0, 0, 0,
-                    0, 0, 0, 15,
-                    5, 9
-                ],
-                backgroundColor: 'rgba(189,208,42,0.2)', // Set a semi-transparent color
+                data: [11, 711, 708, 3738, 1773, 1098, 412, 398, 355, 144, 168, 144, 87, 34, 19],
+                backgroundColor: 'rgba(189,208,42,0.2)',
                 borderColor: 'rgba(189,208,42,255)',
                 borderWidth: 2,
-                fill: true // Fill the area under the line
+                fill: true
             }
         ]
     };
+
 
     const impressionsCtx = document.getElementById('impressionsChart').getContext('2d');
     new Chart(impressionsCtx, {
@@ -606,53 +583,31 @@
 
     // Updated daily clicks data
     const clicksData = {
-        labels: [
-            '10/07/2024', '10/08/2024', '10/09/2024', '10/10/2024',
-            '10/11/2024', '10/12/2024', '10/13/2024', '10/14/2024',
-            '10/15/2024', '10/16/2024', '10/17/2024', '10/18/2024',
-            '10/19/2024', '10/20/2024', '10/21/2024', '11/09/2024',
-            '11/10/2024', '11/11/2024', '11/12/2024', '11/13/2024',
-            '11/14/2024', '11/15/2024', '11/16/2024', '11/17/2024',
-            '11/18/2024', '11/19/2024', '11/20/2024', '11/21/2024',
-            '11/22/2024', '11/23/2024'
-        ],
-        datasets: [
-            {
-                label: 'Organic Clicks',
-                data: [
-                    12, 36, 42, 30,
-                    12, 7, 21, 41,
-                    46, 13, 31, 41,
-                    13, 8, 25, 3,
-                    6, 11, 325, 130,
-                    57, 21, 17, 9,
-                    44, 162, 116, 48,
-                    14, 2
-                ],
-                backgroundColor: 'rgba(31,61,133,0.2)', // Set a semi-transparent color
-                borderColor: 'rgba(31,61,133,255)',
-                borderWidth: 2,
-                fill: true // Fill the area under the line
-            },
-            {
-                label: 'Sponsored Clicks',
-                data: [
-                    0, 0, 0, 0,
-                    0, 0, 0, 0,
-                    1, 0, 0, 0,
-                    0, 1, 0, 0,
-                    1, 0, 0, 0,
-                    0, 0, 0, 0,
-                    0, 0, 0, 1,
-                    0, 0
-                ],
-                backgroundColor: 'rgba(189,208,42,0.2)', // Set a semi-transparent color
-                borderColor: 'rgba(189,208,42,255)',
-                borderWidth: 2,
-                fill: true // Fill the area under the line
-            }
-        ]
-    };
+            labels: [
+                '11/30/2024', '12/01/2024', '12/02/2024', '12/03/2024', '12/04/2024',
+                '12/05/2024', '12/06/2024', '12/07/2024', '12/08/2024', '12/09/2024',
+                '12/10/2024', '12/11/2024', '12/12/2024', '12/13/2024', '12/14/2024'
+            ],
+            datasets: [
+                {
+                    label: 'Organic Clicks',
+                    data: [9, 36, 175, 76, 25, 21, 98, 35, 84, 93, 75, 42, 15, 155, 74],
+                    backgroundColor: 'rgba(31,61,133,0.2)',
+                    borderColor: 'rgba(31,61,133,255)',
+                    borderWidth: 2,
+                    fill: true
+                },
+                {
+                    label: 'Sponsored Clicks',
+                    data: [0, 3, 4, 13, 11, 8, 3, 2, 2, 0, 0, 1, 0, 0, 0],
+                    backgroundColor: 'rgba(189,208,42,0.2)',
+                    borderColor: 'rgba(189,208,42,255)',
+                    borderWidth: 2,
+                    fill: true
+                }
+            ]
+        };
+
 
     const clicksCtx = document.getElementById('clicksChart').getContext('2d');
     new Chart(clicksCtx, {
@@ -688,7 +643,7 @@
 
     <!-- Bar Chart: Active Users by Country -->
     <div class="chart-wrapper" style="flex: 1; margin-top: 15px;"> <!-- Added margin-top for consistency -->
-        <h3>Website: Users Country</h3>
+        <h3>Website: User Device</h3>
         <canvas id="activeUsersByCountryChart" style="max-width: 600px; width: 100%;"></canvas>
     </div>
 </div>
@@ -749,7 +704,7 @@ const websiteData = <%- JSON.stringify(websiteData) %>;
         data: {
             labels: Object.keys(websiteData.activeUsersByCountry),
             datasets: [{
-                label: 'Active Users by Country',
+                label: 'Active Users by Device',
                 backgroundColor: 'rgba(189,208,42,255)',
                 borderColor: 'rgba(189,208,42,255)',
                 data: Object.values(websiteData.activeUsersByCountry)

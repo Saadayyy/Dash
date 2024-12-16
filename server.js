@@ -6,35 +6,36 @@ app.set('view engine', 'ejs');
 
 // LinkedIn Data for the last 14 days (grouped by week)
 const statsData = [
-    { date: '11/17/2024', impressions: { organic: 126, sponsored: 0 }, clicks: { organic: 9, sponsored: 0 }, reactions: 2, comments: 0, engagementRate: 0.087301587, shares: 0 },
-    { date: '11/18/2024', impressions: { organic: 533, sponsored: 0 }, clicks: { organic: 44, sponsored: 0 }, reactions: 19, comments: 2, engagementRate: 0.123827392, shares: 1 },
-    { date: '11/19/2024', impressions: { organic: 550, sponsored: 0 }, clicks: { organic: 162, sponsored: 0 }, reactions: 13, comments: 1, engagementRate: 0.32, shares: 0 },
-    { date: '11/20/2024', impressions: { organic: 527, sponsored: 0 }, clicks: { organic: 116, sponsored: 0 }, reactions: 19, comments: 1, engagementRate: 0.258064516, shares: 0 },
-    { date: '11/21/2024', impressions: { organic: 394, sponsored: 15 }, clicks: { organic: 48, sponsored: 1 }, reactions: 13, comments: 1, engagementRate: 0.15403423, shares: 0 },
-    { date: '11/22/2024', impressions: { organic: 212, sponsored: 5 }, clicks: { organic: 14, sponsored: 0 }, reactions: 8, comments: -1, engagementRate: 0.096774194, shares: 0 },
-    { date: '11/23/2024', impressions: { organic: 211, sponsored: 9 }, clicks: { organic: 2, sponsored: 0 }, reactions: 1, comments: 0, engagementRate: 0.013636364, shares: 0 },
-    { date: '11/24/2024', impressions: { organic: 118, sponsored: 13 }, clicks: { organic: 30, sponsored: 0 }, reactions: 7, comments: 0, engagementRate: 0.282442748, shares: 0 },
-    { date: '11/25/2024', impressions: { organic: 385, sponsored: 719 }, clicks: { organic: 14, sponsored: 3 }, reactions: 14, comments: 0, engagementRate: 0.02807971, shares: 0 },
-    { date: '11/26/2024', impressions: { organic: 178, sponsored: 70 }, clicks: { organic: 27, sponsored: 0 }, reactions: 4, comments: 0, engagementRate: 0.125, shares: 0 },
-    { date: '11/27/2024', impressions: { organic: 435, sponsored: 46 }, clicks: { organic: 28, sponsored: 0 }, reactions: 16, comments: 2, engagementRate: 0.097713098, shares: 1 },
-    { date: '11/28/2024', impressions: { organic: 413, sponsored: 151 }, clicks: { organic: 24, sponsored: 1 }, reactions: 18, comments: 0, engagementRate: 0.078014184, shares: 1 },
-    { date: '11/29/2024', impressions: { organic: 279, sponsored: 8 }, clicks: { organic: 12, sponsored: 0 }, reactions: 12, comments: 0, engagementRate: 0.087108014, shares: 1 },
     { date: '11/30/2024', impressions: { organic: 118, sponsored: 11 }, clicks: { organic: 9, sponsored: 0 }, reactions: 2, comments: 0, engagementRate: 0.085271318, shares: 0 },
-    { date: '12/01/2024', impressions: { organic: 341, sponsored: 711 }, clicks: { organic: 36, sponsored: 3 }, reactions: 12, comments: 2, engagementRate: null, shares: 2 }
+    { date: '12/01/2024', impressions: { organic: 341, sponsored: 711 }, clicks: { organic: 36, sponsored: 3 }, reactions: 12, comments: 2, engagementRate: 0.052281369, shares: 2 },
+    { date: '12/02/2024', impressions: { organic: 875, sponsored: 708 }, clicks: { organic: 175, sponsored: 4 }, reactions: 42, comments: 1, engagementRate: 0.141503474, shares: 2 },
+    { date: '12/03/2024', impressions: { organic: 828, sponsored: 3738 }, clicks: { organic: 76, sponsored: 13 }, reactions: 45, comments: 1, engagementRate: 0.02978537, shares: 3 },
+    { date: '12/04/2024', impressions: { organic: 579, sponsored: 1773 }, clicks: { organic: 25, sponsored: 11 }, reactions: 45, comments: 3, engagementRate: 0.034863946, shares: 1 },
+    { date: '12/05/2024', impressions: { organic: 488, sponsored: 1098 }, clicks: { organic: 21, sponsored: 8 }, reactions: 32, comments: 0, engagementRate: 0.04035309, shares: 1 },
+    { date: '12/06/2024', impressions: { organic: 607, sponsored: 412 }, clicks: { organic: 98, sponsored: 3 }, reactions: 31, comments: 0, engagementRate: 0.130520118, shares: 1 },
+    { date: '12/07/2024', impressions: { organic: 305, sponsored: 398 }, clicks: { organic: 35, sponsored: 2 }, reactions: 12, comments: 0, engagementRate: 0.071123755, shares: 0 },
+    { date: '12/08/2024', impressions: { organic: 411, sponsored: 355 }, clicks: { organic: 84, sponsored: 2 }, reactions: 14, comments: 0, engagementRate: 0.130548303, shares: 0 },
+    { date: '12/09/2024', impressions: { organic: 743, sponsored: 144 }, clicks: { organic: 93, sponsored: 0 }, reactions: 24, comments: 1, engagementRate: 0.135287486, shares: 2 },
+    { date: '12/10/2024', impressions: { organic: 660, sponsored: 168 }, clicks: { organic: 75, sponsored: 0 }, reactions: 29, comments: 0, engagementRate: 0.131642512, shares: 4 },
+    { date: '12/11/2024', impressions: { organic: 444, sponsored: 144 }, clicks: { organic: 42, sponsored: 1 }, reactions: 23, comments: 0, engagementRate: 0.113945578, shares: 1 },
+    { date: '12/12/2024', impressions: { organic: 392, sponsored: 87 }, clicks: { organic: 15, sponsored: 0 }, reactions: 34, comments: 1, engagementRate: 0.108559499, shares: 2 },
+    { date: '12/13/2024', impressions: { organic: 554, sponsored: 34 }, clicks: { organic: 155, sponsored: 0 }, reactions: 51, comments: 4, engagementRate: 0.362244898, shares: 3 },
+    { date: '12/14/2024', impressions: { organic: 326, sponsored: 19 }, clicks: { organic: 74, sponsored: 0 }, reactions: 19, comments: 0, engagementRate: 0.269565217, shares: 0 }
 ];
 
 
 // Competitor Data from 09/21/2024 to 10/05/2024
 
 const competitorsData = [
-    { name: "WEKO", followers: 1580, newFollowers: 8, interactions: 18, posts: 11 },
-    { name: "Sellmore GmbH", followers: 1073, newFollowers: 11, interactions: 95, posts: 4 },
-    { name: "isales GmbH", followers: 615, newFollowers: 13, interactions: 54, posts: 3 },
-    { name: "CompData Computer GmbH", followers: 836, newFollowers: 26, interactions: 147, posts: 4 },
-    { name: "System AG@data GmbH", followers: 976, newFollowers: 2, interactions: 61, posts: 7 },
-    { name: "DPS Business Solutions", followers: 2372, newFollowers: 61, interactions: 174, posts: 10 },
-    { name: "Datatronic Software AG", followers: 1452, newFollowers: 6, interactions: 203, posts: 26 }
+    { name: "WEKO", followers: 1588, newFollowers: 11, interactions: 37, posts: 11 },
+    { name: "Sellmore GmbH", followers: 1079, newFollowers: 7, interactions: 111, posts: 5 },
+    { name: "isales GmbH", followers: 619, newFollowers: 6, interactions: 11, posts: 0 },
+    { name: "CompData Computer GmbH", followers: 862, newFollowers: 19, interactions: 104, posts: 4 },
+    { name: "System AG@data GmbH", followers: 987, newFollowers: 11, interactions: 44, posts: 8 },
+    { name: "DPS Business Solutions", followers: 2449, newFollowers: 103, interactions: 450, posts: 17 },
+    { name: "Datatronic Software AG", followers: 1455, newFollowers: 8, interactions: 356, posts: 29 }
 ];
+
 
 // Website Analytics Data for 90 Days in Weekly Increments
 const startDate = new Date('2024-07-23');
@@ -45,36 +46,42 @@ const weeklyIncrements = Array.from({ length: 14 }, (_, i) => {
 });
 
 const websiteData = {
-    activeUsers: [157, 199, 248, 266, 399, 230, 351, 347, 370, 398, 426, 475, 446, 10],
-    newUsers: [118, 161, 203, 228, 333, 189, 264, 238, 248, 297, 317, 298, 261, 8],
-    weeklyIncrements: ["2024-08-27", "2024-09-03", "2024-09-10", "2024-09-17", "2024-09-24", "2024-10-01", "2024-10-08", "2024-10-15", "2024-10-22", "2024-10-29", "2024-11-05", "2024-11-12", "2024-11-19", "2024-11-24"], // Weekly starting dates
-    averageEngagementTime: [/* retain or add new values as needed */],
+    activeUsers: [404, 218, 236, 354, 355, 381, 408, 451, 460, 483, 539, 549, 32],
+    newUsers: [333, 182, 189, 238, 264, 248, 297, 235, 261, 298, 276, 254, 18],
+    weeklyIncrements: [
+    "2024-09-23", "2024-09-30", "2024-10-07", "2024-10-14", "2024-10-21",
+    "2024-10-28", "2024-11-04", "2024-11-11", "2024-11-18", "2024-11-25",
+    "2024-12-02", "2024-12-09", "2024-12-15"
+],
+    averageEngagementTime: [], // Retain or update if needed
     userSources: {
-        direct: 794,
-        organicSearch: 344,
-        paidSearch: 187,
-        referral: 105,
-        organicSocial: 94
+        direct: 894,
+        organicSearch: 385,
+        paidSearch: 223,
+        referral: 119,
+        organicSocial: 38
     },
     activeUsersByCountry: {
-        Desktop: 1024,
-        Mobile: 479,
-        Tablet: 4
+        Desktop: 1348,
+        Mobile: 297,
+        Tablet: 18
     },
     pageViews: {
-        'Business Software | für ERP, HR, IT Betr. und Cloud-Hosting': 999,
-        'SageMee: Sage Online - Learnplattform': 847,
-        'DPS|BS Campus ▶ All in one Lernplattform': 595,
-        'SAGE HR SUITE - SageMee': 573,
-        'DPS|BS Campus': 513,
-        'Vereinscampus - DPS Business Solutions': 454,
-        'SAGE 100 - SageMee': 353,
-        'Webinar: Vereinsthemen abbilden und Sponsoren gewinnen': 336,
-        'Webinare - DPS Business Solutions': 317,
-        'Anmelden - DPS|BS Campus': 276,
-        'Entdecken - DPS|BS Campus': 167
+        'Homepage': 2502,
+        '/login': 603,
+        'sagehrsuite': 528,
+        'sage100': 311,
+        '/dashboard/discover/Courses': 280,
+        '/profile/overview': 273,
+        '/dienstleistungen/webinare/': 247,
+        '/unternehmen/charity/': 232,
+        '/courses/9f1bbe5e-23b8-4616-af50-71ae78fa21d0/lessons/ad2cbb92-0163-4dd0-91c6-f39083d2b6eb': 199,
+        '/vereinscampus/': 160,
+        '/courses/9f1bbe5e-23b8-4616-af50-71ae78fa21d0/detail': 143,
+        '/dashboard/my-courses': 141
     }
 };
+
 
 // Helper function to calculate weekly totals
 function calculateWeeklyTotals(data) {
