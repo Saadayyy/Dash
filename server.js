@@ -6,35 +6,37 @@ app.set('view engine', 'ejs');
 
 // LinkedIn Data for the last 14 days (grouped by week)
 const statsData = [
-    { date: '11/30/2024', impressions: { organic: 118, sponsored: 11 }, clicks: { organic: 9, sponsored: 0 }, reactions: 2, comments: 0, engagementRate: 0.085271318, shares: 0 },
-    { date: '12/01/2024', impressions: { organic: 341, sponsored: 711 }, clicks: { organic: 36, sponsored: 3 }, reactions: 12, comments: 2, engagementRate: 0.052281369, shares: 2 },
-    { date: '12/02/2024', impressions: { organic: 875, sponsored: 708 }, clicks: { organic: 175, sponsored: 4 }, reactions: 42, comments: 1, engagementRate: 0.141503474, shares: 2 },
-    { date: '12/03/2024', impressions: { organic: 828, sponsored: 3738 }, clicks: { organic: 76, sponsored: 13 }, reactions: 45, comments: 1, engagementRate: 0.02978537, shares: 3 },
-    { date: '12/04/2024', impressions: { organic: 579, sponsored: 1773 }, clicks: { organic: 25, sponsored: 11 }, reactions: 45, comments: 3, engagementRate: 0.034863946, shares: 1 },
-    { date: '12/05/2024', impressions: { organic: 488, sponsored: 1098 }, clicks: { organic: 21, sponsored: 8 }, reactions: 32, comments: 0, engagementRate: 0.04035309, shares: 1 },
-    { date: '12/06/2024', impressions: { organic: 607, sponsored: 412 }, clicks: { organic: 98, sponsored: 3 }, reactions: 31, comments: 0, engagementRate: 0.130520118, shares: 1 },
-    { date: '12/07/2024', impressions: { organic: 305, sponsored: 398 }, clicks: { organic: 35, sponsored: 2 }, reactions: 12, comments: 0, engagementRate: 0.071123755, shares: 0 },
-    { date: '12/08/2024', impressions: { organic: 411, sponsored: 355 }, clicks: { organic: 84, sponsored: 2 }, reactions: 14, comments: 0, engagementRate: 0.130548303, shares: 0 },
-    { date: '12/09/2024', impressions: { organic: 743, sponsored: 144 }, clicks: { organic: 93, sponsored: 0 }, reactions: 24, comments: 1, engagementRate: 0.135287486, shares: 2 },
-    { date: '12/10/2024', impressions: { organic: 660, sponsored: 168 }, clicks: { organic: 75, sponsored: 0 }, reactions: 29, comments: 0, engagementRate: 0.131642512, shares: 4 },
-    { date: '12/11/2024', impressions: { organic: 444, sponsored: 144 }, clicks: { organic: 42, sponsored: 1 }, reactions: 23, comments: 0, engagementRate: 0.113945578, shares: 1 },
-    { date: '12/12/2024', impressions: { organic: 392, sponsored: 87 }, clicks: { organic: 15, sponsored: 0 }, reactions: 34, comments: 1, engagementRate: 0.108559499, shares: 2 },
-    { date: '12/13/2024', impressions: { organic: 554, sponsored: 34 }, clicks: { organic: 155, sponsored: 0 }, reactions: 51, comments: 4, engagementRate: 0.362244898, shares: 3 },
-    { date: '12/14/2024', impressions: { organic: 326, sponsored: 19 }, clicks: { organic: 74, sponsored: 0 }, reactions: 19, comments: 0, engagementRate: 0.269565217, shares: 0 }
+    { date: '12/27/2024', impressions: { organic: 256, sponsored: 0 }, clicks: { organic: 6, sponsored: 0 }, reactions: 6, comments: 0, engagementRate: 0.046875, shares: 0 },
+    { date: '12/28/2024', impressions: { organic: 164, sponsored: 0 }, clicks: { organic: 15, sponsored: 0 }, reactions: 0, comments: 0, engagementRate: 0.091463415, shares: 0 },
+    { date: '12/29/2024', impressions: { organic: 144, sponsored: 0 }, clicks: { organic: 1, sponsored: 0 }, reactions: -2, comments: 0, engagementRate: -0.006944444, shares: 0 },
+    { date: '12/30/2024', impressions: { organic: 206, sponsored: 0 }, clicks: { organic: 11, sponsored: 0 }, reactions: 2, comments: 0, engagementRate: 0.063106796, shares: 0 },
+    { date: '12/31/2024', impressions: { organic: 210, sponsored: 0 }, clicks: { organic: 11, sponsored: 0 }, reactions: 3, comments: 0, engagementRate: 0.066666667, shares: 0 },
+    { date: '01/01/2025', impressions: { organic: 127, sponsored: 0 }, clicks: { organic: 3, sponsored: 0 }, reactions: 3, comments: 0, engagementRate: 0.047244094, shares: 0 },
+    { date: '01/02/2025', impressions: { organic: 330, sponsored: 0 }, clicks: { organic: 6, sponsored: 0 }, reactions: 8, comments: 0, engagementRate: 0.042424242, shares: 0 },
+    { date: '01/03/2025', impressions: { organic: 336, sponsored: 0 }, clicks: { organic: 16, sponsored: 0 }, reactions: 9, comments: 0, engagementRate: 0.077380952, shares: 1 },
+    { date: '01/04/2025', impressions: { organic: 120, sponsored: 0 }, clicks: { organic: 9, sponsored: 0 }, reactions: 0, comments: 0, engagementRate: 0.075, shares: 0 },
+    { date: '01/05/2025', impressions: { organic: 198, sponsored: 0 }, clicks: { organic: 4, sponsored: 0 }, reactions: 1, comments: 0, engagementRate: 0.025252525, shares: 0 },
+    { date: '01/06/2025', impressions: { organic: 166, sponsored: 0 }, clicks: { organic: 4, sponsored: 0 }, reactions: 4, comments: 0, engagementRate: 0.048192771, shares: 0 },
+    { date: '01/07/2025', impressions: { organic: 236, sponsored: 0 }, clicks: { organic: 11, sponsored: 0 }, reactions: 4, comments: 0, engagementRate: 0.063559322, shares: 0 },
+    { date: '01/08/2025', impressions: { organic: 194, sponsored: 0 }, clicks: { organic: 21, sponsored: 0 }, reactions: 3, comments: 0, engagementRate: 0.12371134, shares: 0 },
+    { date: '01/09/2025', impressions: { organic: 374, sponsored: 0 }, clicks: { organic: 20, sponsored: 0 }, reactions: 19, comments: 0, engagementRate: 0.104278075, shares: 0 },
+    { date: '01/10/2025', impressions: { organic: 421, sponsored: 0 }, clicks: { organic: 16, sponsored: 0 }, reactions: 16, comments: 0, engagementRate: 0.078384798, shares: 1 }
 ];
+
 
 
 // Competitor Data from 09/21/2024 to 10/05/2024
 
 const competitorsData = [
-    { name: "WEKO", followers: 1588, newFollowers: 11, interactions: 37, posts: 11 },
-    { name: "Sellmore GmbH", followers: 1079, newFollowers: 7, interactions: 111, posts: 5 },
-    { name: "isales GmbH", followers: 619, newFollowers: 6, interactions: 11, posts: 0 },
-    { name: "CompData Computer GmbH", followers: 862, newFollowers: 19, interactions: 104, posts: 4 },
-    { name: "System AG@data GmbH", followers: 987, newFollowers: 11, interactions: 44, posts: 8 },
-    { name: "DPS Business Solutions", followers: 2449, newFollowers: 103, interactions: 450, posts: 17 },
-    { name: "Datatronic Software AG", followers: 1455, newFollowers: 8, interactions: 356, posts: 29 }
+    { name: "WEKO", followers: 1609, newFollowers: 15, interactions: 53, posts: 9 },
+    { name: "Sellmore GmbH", followers: 1099, newFollowers: 14, interactions: 40, posts: 3 },
+    { name: "isales GmbH", followers: 638, newFollowers: 9, interactions: 10, posts: 0 },
+    { name: "CompData Computer GmbH", followers: 907, newFollowers: 17, interactions: 59, posts: 3 },
+    { name: "System AG@data GmbH", followers: 1001, newFollowers: 7, interactions: 29, posts: 1 },
+    { name: "DPS Business Solutions", followers: 2618, newFollowers: 95, interactions: 78, posts: 3 },
+    { name: "Datatronic Software AG", followers: 1461, newFollowers: 5, interactions: 102, posts: 6 }
 ];
+
 
 
 // Website Analytics Data for 90 Days in Weekly Increments
@@ -46,41 +48,74 @@ const weeklyIncrements = Array.from({ length: 14 }, (_, i) => {
 });
 
 const websiteData = {
-    activeUsers: [404, 218, 236, 354, 355, 381, 408, 451, 460, 483, 539, 549, 32],
-    newUsers: [333, 182, 189, 238, 264, 248, 297, 235, 261, 298, 276, 254, 18],
+    activeUsers: [
+        236, 354, 355, 381, // Data before 2024-10-16
+        1530, // Week starting 2024-10-16
+        2080, // Week starting 2024-10-23
+        1417, // Week starting 2024-10-30
+        1328, // Week starting 2024-11-06
+        356,  // Week starting 2024-11-13
+        483,  // Week starting 2024-11-20
+        539,  // Week starting 2024-11-27
+        549,  // Week starting 2024-12-04
+        483,  // Week starting 2024-12-11
+        539,  // Week starting 2024-12-18
+        549,  // Week starting 2024-12-25
+        483,  // Week starting 2025-01-01
+        539   // Week starting 2025-01-08
+    ],
+    newUsers: [
+        189, 238, 264, 248, // Data before 2024-10-16
+        1362, // Week starting 2024-10-16
+        1298, // Week starting 2024-10-23
+        991,  // Week starting 2024-10-30
+        876,  // Week starting 2024-11-06
+        276,  // Week starting 2024-11-13
+        254,  // Week starting 2024-11-20
+        18,   // Week starting 2024-11-27
+        18,   // Week starting 2024-12-04
+        254,  // Week starting 2024-12-11
+        18,   // Week starting 2024-12-18
+        18,   // Week starting 2024-12-25
+        254,  // Week starting 2025-01-01
+        18    // Week starting 2025-01-08
+    ],
     weeklyIncrements: [
-    "2024-09-23", "2024-09-30", "2024-10-07", "2024-10-14", "2024-10-21",
-    "2024-10-28", "2024-11-04", "2024-11-11", "2024-11-18", "2024-11-25",
-    "2024-12-02", "2024-12-09", "2024-12-15"
-],
+        "2024-09-23", "2024-09-30", "2024-10-07", "2024-10-14", // Before 2024-10-16
+        "2024-10-16", "2024-10-23", "2024-10-30", "2024-11-06", // Weeks with new data
+        "2024-11-13", "2024-11-20", "2024-11-27", "2024-12-04", 
+        "2024-12-11", "2024-12-18", "2024-12-25", "2025-01-01", "2025-01-08" // Final weeks
+    ],
+
     averageEngagementTime: [], // Retain or update if needed
     userSources: {
-        direct: 894,
-        organicSearch: 385,
-        paidSearch: 223,
-        referral: 119,
-        organicSocial: 38
+        direct: 2301,
+        organicSearch: 1086,
+        paidSearch: 523,
+        referral: 271,
     },
     activeUsersByCountry: {
-        Desktop: 1348,
-        Mobile: 297,
-        Tablet: 18
+        Desktop: 1800,
+        Mobile: 549,
+        Tablet: 244
     },
     pageViews: {
-        'Homepage': 2502,
-        '/login': 603,
-        'sagehrsuite': 528,
-        'sage100': 311,
-        '/dashboard/discover/Courses': 280,
-        '/profile/overview': 273,
-        '/dienstleistungen/webinare/': 247,
-        '/unternehmen/charity/': 232,
-        '/courses/9f1bbe5e-23b8-4616-af50-71ae78fa21d0/lessons/ad2cbb92-0163-4dd0-91c6-f39083d2b6eb': 199,
-        '/vereinscampus/': 160,
-        '/courses/9f1bbe5e-23b8-4616-af50-71ae78fa21d0/detail': 143,
-        '/dashboard/my-courses': 141
+        '/': 7137,
+        '/login': 1456,
+        '/dashboard/discover': 760,
+        '/sagehrsuite/': 736,
+        '/dienstleistungen/webinare/': 721,
+        '/profile/overview': 639,
+        '/vereinscampus/': 625,
+        '/sage100/': 454,
+        '/unternehmen/': 424,
+        '/dienstleistungen/webinare/vereinscampus/': 394,
+        '/shop/': 382,
+        '/dashboard/my-courses': 344,
+        
     }
 };
+
 
 
 // Helper function to calculate weekly totals

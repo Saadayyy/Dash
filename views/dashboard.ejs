@@ -544,62 +544,27 @@
         });
 
     const impressionsData = {
-        labels: [
-            '11/30/2024', '12/01/2024', '12/02/2024', '12/03/2024', '12/04/2024',
-            '12/05/2024', '12/06/2024', '12/07/2024', '12/08/2024', '12/09/2024',
-            '12/10/2024', '12/11/2024', '12/12/2024', '12/13/2024', '12/14/2024'
-        ],
-        datasets: [
-            {
-                label: 'Organic Impressions',
-                data: [118, 341, 875, 828, 579, 488, 607, 305, 411, 743, 660, 444, 392, 554, 326],
-                backgroundColor: 'rgba(31,61,133,0.2)',
-                borderColor: 'rgba(31,61,133,255)',
-                borderWidth: 2,
-                fill: true
-            },
-            {
-                label: 'Sponsored Impressions',
-                data: [11, 711, 708, 3738, 1773, 1098, 412, 398, 355, 144, 168, 144, 87, 34, 19],
-                backgroundColor: 'rgba(189,208,42,0.2)',
-                borderColor: 'rgba(189,208,42,255)',
-                borderWidth: 2,
-                fill: true
-            }
-        ]
-    };
-
-
-    const impressionsCtx = document.getElementById('impressionsChart').getContext('2d');
-    new Chart(impressionsCtx, {
-        type: 'line', // Change to 'line'
-        data: impressionsData,
-        options: {
-            scales: {
-                y: { beginAtZero: true }
-            }
-        }
-    });
-
-    // Updated daily clicks data
-    const clicksData = {
             labels: [
-                '11/30/2024', '12/01/2024', '12/02/2024', '12/03/2024', '12/04/2024',
-                '12/05/2024', '12/06/2024', '12/07/2024', '12/08/2024', '12/09/2024',
-                '12/10/2024', '12/11/2024', '12/12/2024', '12/13/2024', '12/14/2024'
+                '12/27/2024', '12/28/2024', '12/29/2024', '12/30/2024', '12/31/2024',
+                '01/01/2025', '01/02/2025', '01/03/2025', '01/04/2025', '01/05/2025',
+                '01/06/2025', '01/07/2025', '01/08/2025', '01/09/2025', '01/10/2025'
             ],
             datasets: [
                 {
-                    label: 'Organic Clicks',
-                    data: [9, 36, 175, 76, 25, 21, 98, 35, 84, 93, 75, 42, 15, 155, 74],
+                    label: 'Organic Impressions',
+                    data: [
+                        256, 164, 144, 206, 210, 127, 330, 336, 120, 198, 166, 236, 194, 374, 421 // New data for last 15 days
+                    ],
                     backgroundColor: 'rgba(31,61,133,0.2)',
                     borderColor: 'rgba(31,61,133,255)',
                     borderWidth: 2,
                     fill: true
                 },
                 {
-                    label: 'Sponsored Clicks',
-                    data: [0, 3, 4, 13, 11, 8, 3, 2, 2, 0, 0, 1, 0, 0, 0],
+                    label: 'Sponsored Impressions',
+                    data: [
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 // No sponsored data for last 15 days in statsData
+                    ],
                     backgroundColor: 'rgba(189,208,42,0.2)',
                     borderColor: 'rgba(189,208,42,255)',
                     borderWidth: 2,
@@ -608,17 +573,59 @@
             ]
         };
 
+        const clicksData = {
+            labels: [
+                '12/27/2024', '12/28/2024', '12/29/2024', '12/30/2024', '12/31/2024',
+                '01/01/2025', '01/02/2025', '01/03/2025', '01/04/2025', '01/05/2025',
+                '01/06/2025', '01/07/2025', '01/08/2025', '01/09/2025', '01/10/2025'
+            ],
+            datasets: [
+                {
+                    label: 'Organic Clicks',
+                    data: [
+                        6, 15, 1, 11, 11, 3, 6, 16, 9, 4, 4, 11, 21, 20, 16 // New data for last 15 days
+                    ],
+                    backgroundColor: 'rgba(31,61,133,0.2)',
+                    borderColor: 'rgba(31,61,133,255)',
+                    borderWidth: 2,
+                    fill: true
+                },
+                {
+                    label: 'Sponsored Clicks',
+                    data: [
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 // No sponsored data for last 15 days in statsData
+                    ],
+                    backgroundColor: 'rgba(189,208,42,0.2)',
+                    borderColor: 'rgba(189,208,42,255)',
+                    borderWidth: 2,
+                    fill: true
+                }
+            ]
+        };
 
-    const clicksCtx = document.getElementById('clicksChart').getContext('2d');
-    new Chart(clicksCtx, {
-        type: 'line', // Change to 'line'
-        data: clicksData,
-        options: {
-            scales: {
-                y: { beginAtZero: true }
+        // Initialize the charts with updated data
+        const impressionsCtx = document.getElementById('impressionsChart').getContext('2d');
+        new Chart(impressionsCtx, {
+            type: 'line', // Change to 'line'
+            data: impressionsData,
+            options: {
+                scales: {
+                    y: { beginAtZero: true }
+                }
             }
-        }
-    });
+        });
+
+        const clicksCtx = document.getElementById('clicksChart').getContext('2d');
+        new Chart(clicksCtx, {
+            type: 'line', // Change to 'line'
+            data: clicksData,
+            options: {
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
 
 </script>
 
