@@ -161,56 +161,56 @@ Kontaktaufnahme über LinkedIn automatisiert und wandeln diese Leads in MQLs (Ma
     });
 </script>
 
-    <script>
-        // Create the chart
-        const ctx = document.getElementById('visitsChart').getContext('2d');
-        const visitsChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['2024-05', '2024-06', '2024-07', '2024-08', '2024-09', '2024-10', '2024-11'],
-                datasets: [
-                    {
-                        label: 'datatronic.de',
-                        data: [790, 909, 1059, 1131, 1049, 1201, 1185],
-                        borderColor: '#1f77b4',
-                        backgroundColor: 'rgba(31, 119, 180, 0.2)',
-                        borderWidth: 2,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'sellmore.de',
-                        data: [325, 333, 915, 923, 1412, 1204, 1629],
-                        borderColor: '#ff7f0e',
-                        backgroundColor: 'rgba(255, 127, 14, 0.2)',
-                        borderWidth: 2,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'dps-bs.de',
-                        data: [0, 0, 314, 2862, 3717, 3865, 4977],
-                        borderColor: 'rgba(31,61,133,255)',
-                        backgroundColor: 'rgba(31,61,133,255)',
-                        borderWidth: 4, /* Thicker line */
-                        tension: 0.4
-                    },
-                    {
-                        label: 'isales.de',
-                        data: [273, 279, 256, 252, 253, 317, 349],
-                        borderColor: '#9467bd',
-                        backgroundColor: 'rgba(148, 103, 189, 0.2)',
-                        borderWidth: 2,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'compdata.de',
-                        data: [348, 363, 379, 352, 377, 447, 416],
-                        borderColor: '#2ca02c',
-                        backgroundColor: 'rgba(44, 160, 44, 0.2)',
-                        borderWidth: 2,
-                        tension: 0.4
-                    }
-                ]
-            },
+<script>
+    // Create the chart
+    const ctx = document.getElementById('visitsChart').getContext('2d');
+    const visitsChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['2024-07', '2024-08', '2024-09', '2024-10', '2024-11', '2024-12', '2025-01'],
+            datasets: [
+                {
+                    label: 'datatronic.de',
+                    data: [2441, 2546, 2432, 2344, 2602, 2907, 4271],
+                    borderColor: '#1f77b4',
+                    backgroundColor: 'rgba(31, 119, 180, 0.2)',
+                    borderWidth: 2,
+                    tension: 0.4
+                },
+                {
+                    label: 'sellmore.de',
+                    data: [1953, 1950, 2469, 4012, 4363, 5383, 7009],
+                    borderColor: '#ff7f0e',
+                    backgroundColor: 'rgba(255, 127, 14, 0.2)',
+                    borderWidth: 2,
+                    tension: 0.4
+                },
+                {
+                    label: 'dps-bs.de',
+                    data: [5617, 5473, 2995, 2677, 2304, 3572, 7926],
+                    borderColor: 'rgba(31,61,133,255)',
+                    backgroundColor: 'rgba(31,61,133,255)',
+                    borderWidth: 4, /* Thicker line */
+                    tension: 0.4
+                },
+                {
+                    label: 'isales.de',
+                    data: [774, 733, 708, 778, 855, 947, 803],
+                    borderColor: '#9467bd',
+                    backgroundColor: 'rgba(148, 103, 189, 0.2)',
+                    borderWidth: 2,
+                    tension: 0.4
+                },
+                {
+                    label: 'compdata.de',
+                    data: [975, 967, 1566, 1137, 1146, 1470, 1553],
+                    borderColor: '#2ca02c',
+                    backgroundColor: 'rgba(44, 160, 44, 0.2)',
+                    borderWidth: 2,
+                    tension: 0.4
+                }
+            ]
+        },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
